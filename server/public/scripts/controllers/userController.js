@@ -3,7 +3,6 @@ $scope.movies = [];
 $scope.dataFactory = DataFactory;
 $scope.hidden = true;
 $scope.message = "";
-$scope.userID= {};
   // This happens after view/controller loads -- not ideal
   console.log('checking user');
 
@@ -11,19 +10,16 @@ $scope.userID= {};
 
   if($scope.dataFactory.factoryCurrentUser() === undefined) {
       $scope.dataFactory.factoryRefreshUser().then(function() {
-        $scope.userName = $scope.dataFactory.factoryCurrentUser().username;
-        $scope.userID = $scope.dataFactory.factoryCurrentUser()._id;
-        $scope.dataFactory.factoryRefreshUser();
-        console.log('User Data: ', $scope.userName, $scope.userID);
+        $scope.userName = $scope.dataFactory.factoryCurrentUser();
+        console.log('User Data: ', $scope.dataFactory.factoryCurrentUser());
         $scope.hidden = false;
         if ($scope.dataFactory.factoryCurrentUser() === undefined) {
           $location.path("/home");
         }
       });
     } else {
-      $scope.userName = $scope.dataFactory.factoryCurrentUser().username;
-      $scope.userID = $scope.dataFactory.factoryCurrentUser()._id;
-      console.log('User Data: ', $scope.userName, $scope.userID);
+      $scope.userName = $scope.dataFactory.factoryCurrentUser();
+      console.log('User Data: ', $scope.dataFactory.factoryCurrentUser());
       $scope.hidden = false;
     }
 

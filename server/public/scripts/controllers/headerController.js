@@ -1,7 +1,6 @@
 myApp.controller('HeaderController', ['$scope', '$http', '$window', '$location', 'DataFactory', function($scope, $http, $window, $location, DataFactory) {
 $scope.dataFactory = DataFactory;
 $scope.hidden = true;
-  // This happens after view/controller loads -- not ideal
   console.log('checking user');
   loadLogin();
 
@@ -9,20 +8,15 @@ $scope.hidden = true;
     if($scope.dataFactory.factoryCurrentUser() === undefined) {
       $scope.dataFactory.factoryRefreshUser().then(function() {
         $scope.userName = $scope.dataFactory.factoryCurrentUser();
-        console.log('User Data: ', $scope.dataFactory.factoryCurrentUser());
         $scope.hidden = false;
-        console.log($scope.hidden);
         if ($scope.dataFactory.factoryCurrentUser() === undefined) {
           $location.path("/home");
           $scope.hidden = true;
-          console.log($scope.hidden);
         }
       });
     } else {
       $scope.userName = $scope.dataFactory.factoryCurrentUser();
-      console.log('User Data: ', $scope.dataFactory.factoryCurrentUser());
       $scope.hidden = false;
-      console.log($scope.hidden);
     }
   }
 

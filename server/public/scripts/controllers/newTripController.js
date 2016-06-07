@@ -4,6 +4,7 @@ myApp.controller('NewTripController', ['$scope', '$http', '$window', '$location'
 
     $scope.submitNewTrip = function () {
       var data = $scope.currentTrip;
+      // data.userid = 
       console.log(data);
       $http.post('/trips', data)
         .then(function () {

@@ -2,11 +2,11 @@ myApp.factory('DataFactory', ['$http', function($http) {
   console.log('dataFactory running');
 
   // PRIVATE
-  var userData = undefined;
+  var userName = undefined;
 
-  function getUserData() {
+  function getUser() {
     var promise = $http.get('/user').then(function(response) {
-      userData = response.data;
+      userName = response.data.username;
     });
     return promise;
   }
@@ -14,10 +14,10 @@ myApp.factory('DataFactory', ['$http', function($http) {
   // PUBLIC
   var publicApi = {
     factoryRefreshUser: function() {
-      return getUserData();
+      return getUser();
     },
     factoryCurrentUser: function() {
-      return userData;
+      return userName;
     }
   };
 

@@ -8,7 +8,7 @@ var TripSchema = new Schema({
   destination: { type: String },
   departure: Date,
   return: Date,
-  users: { type: String },
+  users: [Schema.Types.ObjectId],
   costs: [CostCategorySchema],
   groceries: [GroceryCategorySchema]
 });
