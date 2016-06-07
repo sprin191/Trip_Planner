@@ -1,0 +1,20 @@
+<div class="container">
+<h1>Create a New Trip</h1>
+<section id="tripSubmission">
+      <form id="tripForm">
+        <label for="name">Trip Name:</label>
+        <input type="text" id="currentName" name="name" ng-model="currentTrip.name" />
+
+        <label for="destination">Destination:</label>
+        <input type="text" id="currentDestination" name="destination" ng-model="currentTrip.destination" />
+
+        <label for="departure">Departure Date:</label>
+        <input type="date" id="currentDeparture" name="departure" ng-model="currentTrip.departure" />
+
+        <label for="return">Return Date:</label>
+        <input type="date" id="currentReturn" name="return" ng-model="currentTrip.return" />
+
+        <button ng-click="submitNewTrip()">Submit</button>
+      </form>
+</section>
+</div>
