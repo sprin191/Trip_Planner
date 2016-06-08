@@ -1,3 +1,13 @@
-<div class="container">
+<div class="content">
     <h1 id="welcome" class="lead">Welcome, {{userName}}!</h1>
+    <h1>{{message}}</h1>
+    <div class="recentTrip" ng-if="recentTrip.name">
+      <h1>{{recentTrip.name}}</h1>
+      <h2>{{recentTrip.destination}}</h2>
+      <h3>{{recentTrip.departure}} - {{recentTrip.return}}</h3>
+    <div class="col-md-12 images">
+      <a href="#costs"><img class="costPic" src="/images/print-dollar-sign-small.png"/></a>
+      <a href="#groceries"><img class="groceryPic" src="/images/groceries1.jpg"/></a>
+    </div>
+</div>
 </div>

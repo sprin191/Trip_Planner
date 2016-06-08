@@ -3,6 +3,7 @@ myApp.factory('DataFactory', ['$http', function($http) {
 
   // PRIVATE
   var userName = undefined;
+  var selectedTrip = undefined;
 
   function getUser() {
     var promise = $http.get('/user').then(function(response) {
@@ -11,6 +12,7 @@ myApp.factory('DataFactory', ['$http', function($http) {
     return promise;
   }
 
+
   // PUBLIC
   var publicApi = {
     factoryRefreshUser: function() {
@@ -18,6 +20,18 @@ myApp.factory('DataFactory', ['$http', function($http) {
     },
     factoryCurrentUser: function() {
       return userName;
+    },
+    factoryGetSelectedTrip: function (id) {
+      var promise = $http.get('/selectedTrip' + id).then(function (trip) {
+            trip.departure = new Date(trip.departure);
+            trip.return = new Date(trip.return);
+            selectedTrip = trip.data;
+            console.log('GET /selectedTrip ', trip.data);
+          });
+          return promise;
+    },
+    factoryCurrentTrip: function() {
+      return selectedTrip;
     }
   };
 

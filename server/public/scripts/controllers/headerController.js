@@ -1,8 +1,22 @@
 myApp.controller('HeaderController', ['$scope', '$http', '$window', '$location', 'DataFactory', function($scope, $http, $window, $location, DataFactory) {
 $scope.dataFactory = DataFactory;
 $scope.hidden = true;
+$scope.currentTrip = '';
+$scope.factoryCurrentTrip = '';
+
   console.log('checking user');
+
   loadLogin();
+  getTrips();
+
+  function loadSelectedTrip (trip) {
+    console.log("hello");
+    if($scope.selectedTrip !== '') {
+      $scope.dataFactory.factoryGetSelectedTrip().then(function() {
+        $scope.factoryCurrentTrip = $scope.dataFactory.factoryCurrentTrip();
+      });
+    }
+  }
 
   function loadLogin () {
     if($scope.dataFactory.factoryCurrentUser() === undefined) {
@@ -20,16 +34,6 @@ $scope.hidden = true;
     }
   }
 
-  /*$http.get('/user').then(function(response) {
-      if(response.data.username) {
-          $scope.userName = response.data.username;
-          $scope.show = true;
-          console.log('User Data: ', $scope.userName);
-      } else {
-          $location.path("/home");
-      }
-  });*/
-
   $scope.logout = function() {
     console.log('made to logged out');
     $http.get('/user/logout').then(function(response) {
@@ -38,5 +42,17 @@ $scope.hidden = true;
       location.reload();
     });
   };
+
+  function getTrips() {
+      $http.get('/trips')
+        .then(function (response) {
+          response.data.forEach(function (trip) {
+            trip.departure = new Date(trip.departure);
+            trip.return = new Date(trip.return);
+          });
+          $scope.trips = response.data;
+          console.log('GET /trips ', response.data);
+        });
+    }
 
 }]);

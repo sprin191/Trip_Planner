@@ -1,12 +1,12 @@
 myApp.controller('UserController', ['$scope', '$http', '$window', '$location', 'DataFactory', function($scope, $http, $window, $location, DataFactory) {
-$scope.movies = [];
 $scope.dataFactory = DataFactory;
 $scope.hidden = true;
 $scope.message = "";
+$scope.recentTrip = "";
   // This happens after view/controller loads -- not ideal
   console.log('checking user');
 
-  getTrips();
+  getRecentTrip();
 
   if($scope.dataFactory.factoryCurrentUser() === undefined) {
       $scope.dataFactory.factoryRefreshUser().then(function() {
@@ -23,16 +23,23 @@ $scope.message = "";
       $scope.hidden = false;
     }
 
-    function getTrips() {
+    function getRecentTrip() {
         $http.get('/trips')
           .then(function (response) {
             response.data.forEach(function (trip) {
               trip.departure = new Date(trip.departure);
               trip.return = new Date(trip.return);
             });
-            $scope.trips = response.data;
             console.log('GET /trips ', response.data);
+            if (response.data.length === 0) {
+              $scope.message = "You don't have any trips yet.";
+            }
+            else {
+              $scope.recentTrip = response.data[response.data.length - 1];
+              console.log($scope.recentTrip);
+              $scope.recentTrip.departure = moment($scope.recentTrip.departure).format('MM/DD/YYYY');
+              $scope.recentTrip.return = moment($scope.recentTrip.return).format('MM/DD/YYYY');
+            }
           });
       }
-
 }]);
