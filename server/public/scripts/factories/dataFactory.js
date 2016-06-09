@@ -22,7 +22,7 @@ myApp.factory('DataFactory', ['$http', function($http) {
       return userName;
     },
     factoryGetSelectedTrip: function (id) {
-      var promise = $http.get('/selectedTrip' + id).then(function (trip) {
+      var promise = $http.get('/selectedTrip/' + id).then(function (trip) {
             trip.departure = new Date(trip.departure);
             trip.return = new Date(trip.return);
             selectedTrip = trip.data;

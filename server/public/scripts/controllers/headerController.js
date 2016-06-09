@@ -9,14 +9,14 @@ $scope.factoryCurrentTrip = '';
   loadLogin();
   getTrips();
 
-  function loadSelectedTrip (trip) {
-    console.log("hello");
-    if($scope.selectedTrip !== '') {
-      $scope.dataFactory.factoryGetSelectedTrip().then(function() {
+  $scope.loadSelectedTrip = function() {
+    console.log($scope.currentTrip._id);
+    if($scope.currentTrip !== '') {
+      $scope.dataFactory.factoryGetSelectedTrip($scope.currentTrip._id).then(function() {
         $scope.factoryCurrentTrip = $scope.dataFactory.factoryCurrentTrip();
       });
     }
-  }
+  };
 
   function loadLogin () {
     if($scope.dataFactory.factoryCurrentUser() === undefined) {
