@@ -29,7 +29,7 @@ myApp.config(['$routeProvider', function($routeProvider) {
     })
     .when('/currentTrip', {
       templateUrl: '/views/currentTrip.html',
-      controller: "currentTripController",
+      controller: "CurrentTripController",
     })
     .otherwise({
       redirectTo: 'home'

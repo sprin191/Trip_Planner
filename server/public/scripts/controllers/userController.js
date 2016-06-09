@@ -5,19 +5,20 @@ $scope.message = "";
 $scope.recentTrip = "";
 
   getRecentTrip();
+  loadLogin();
 
+  function loadLogin () {
   if($scope.dataFactory.factoryCurrentUser() === undefined) {
       $scope.dataFactory.factoryRefreshUser().then(function() {
         $scope.userName = $scope.dataFactory.factoryCurrentUser();
-        $scope.hidden = false;
         if ($scope.dataFactory.factoryCurrentUser() === undefined) {
           $location.path("/home");
         }
       });
     } else {
       $scope.userName = $scope.dataFactory.factoryCurrentUser();
-      $scope.hidden = false;
     }
+  }
 
     function getRecentTrip() {
       $scope.dataFactory.factoryGetRecentTrip().then(function() {
