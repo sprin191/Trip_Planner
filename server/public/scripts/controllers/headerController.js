@@ -4,8 +4,6 @@ $scope.hidden = true;
 $scope.currentTrip = '';
 $scope.factoryCurrentTrip = '';
 
-  console.log('checking user');
-
   loadLogin();
   getTrips();
 

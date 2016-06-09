@@ -1,10 +1,10 @@
 <div class="header" ng-controller="HeaderController">
     <div class="container">
-        <h1 class="lead">Adventure Planner</h1>
+        <h1 class="lead"><a href="#user" class="lead">Trip Planner</a></h1>
           <button ng-hide="hidden" class="btn btn-default logout" ng-click="logout()">Log Out</button>
           <select ng-hide="hidden" class="selectTrip" ng-model="currentTrip" ng-options="trip.name for trip in trips track by trip._id" ng-change="loadSelectedTrip()">
           <option value="">All Trips</option>
           </select>
-          <button ng-hide="hidden" class="btn btn-default newTrip"><a class="nav" href="#newTrip">+</a></button>
+          <a ng-hide="hidden" class="btn btn-default newTrip" href="#newTrip">+</a>
     </div>
 </div>

@@ -62,6 +62,20 @@
   text-align: center;
 }
 
+.lead {
+    color: #DDDDDD !important;
+    text-decoration: inherit;
+
+}
+
+.lead:hover {
+  text-decoration: inherit;
+}
+
+.lead:link {
+  text-decoration: inherit;
+}
+
 img {
   max-height: 150px;
   width: auto;
