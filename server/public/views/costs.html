@@ -1,5 +1,5 @@
 <div class="container">
-<h1>Trip Costs</h1>
+<h1>{{factoryCurrentTrip.data.name}} Costs</h1>
 <section id="costCategorySubmission">
       <form id="categoryForm">
         <label for="costCategory">Create A New Category:</label>
@@ -12,19 +12,36 @@
 
 <section id="costCategories">
           <div class = "categories" ng-repeat="cost in factoryCurrentTrip.data.costs">
-          <h2>{{cost.category}}</h2>
-          <div class = "items" ng-repeat="item in cost">
-          <ul id="costForm">
-            <li class="expense">
-              <label for="expense_name"></label>
-              <input type="text" id="expense_name" name="expense_name" ng-model="factoryCurrentTrip.data.costs.items[0].expense_name" />
+          <h3>{{cost.category}}</h3>
+          <table class = "table table-bordered">
+            <thead ng-if="cost.items.length !== 0">
+              <tr>
+                <th>Expense</th>
+                <th>Cost</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class = "items" ng-repeat="item in cost.items">
+                <td><button class="btnItem" ng-click="deleteItem(cost._id, item._id)">x</button>   {{item.expense_name}}</td>
+                <td>${{item.cost}}</td>
+              </tr>
+            </tbody>
+          </table>
+          <button class="newitem" ng-click="addItem(cost._id)">Add New Item</button>
+              <div ng-show="displayedCategoryID == cost._id">
+                <ul id="costForm">
+                  <li class="expense">
+                    <label for="expense_name">Name:</label>
+                    <input type="text" id="expense_name" name="expense_name" ng-model="newExpense.expense_name" />
 
-              <label for="cost"></label>
-              <input type="number" id="cost" name="cost" ng-model="factoryCurrentTrip.data.costs.items[0].cost" />
-              <button class="update" ng-click="addNewItem(factoryCurrentTrip.data.costs.category._id)">Add New Item</button>
-            </li>
-            </ul>
-            </div>
-          </div>
-
+                    <label for="cost">Cost:</label>
+                    <input type="number" id="cost" name="cost" ng-model="newExpense.cost" />
+                  </li>
+                  </ul>
+                  <button class="addNewItem" ng-click="submitNewItem(cost._id)">Submit</button>
+                  </div>
+                </div>
 </section>
+
+<h3>TOTAL COST: ${{ getTotal() }}</h3>
+</div>

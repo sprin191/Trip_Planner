@@ -93,3 +93,13 @@ img:hover {
   padding-left: 20px;
   border-radius: 80px;
 }
+
+.table {
+  max-width: 350px;
+}
+
+.btnItem {
+  max-width: 20px;
+  height: auto;
+  font-size: 10px;
+}
