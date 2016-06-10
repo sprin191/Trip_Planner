@@ -3,7 +3,7 @@ myApp.factory('DataFactory', ['$http', function($http) {
 
   // PRIVATE
   var userName = undefined;
-  var selectedTrip = undefined;
+  var selectedTrip = {};
 
   function getUser() {
     var promise = $http.get('/user').then(function(response) {
@@ -23,17 +23,14 @@ myApp.factory('DataFactory', ['$http', function($http) {
     },
     factoryGetSelectedTrip: function (id) {
       var promise = $http.get('/selectedTrip/' + id).then(function (trip) {
-            trip.departure = new Date(trip.departure);
-            trip.return = new Date(trip.return);
-            selectedTrip = trip.data;
-            console.log('GET /selectedTrip ', trip.data);
+            trip.data[0].departure = moment( new Date(trip.data[0].departure)).format('MM/DD/YYYY');
+            trip.data[0].return = moment( new Date(trip.data[0].return)).format('MM/DD/YYYY');
+            selectedTrip.data = trip.data[0];
+            console.log('GET /selectedTrip ', selectedTrip);
           });
           return promise;
     },
-    factoryCurrentTrip: function() {
-      console.log(selectedTrip);
-      return selectedTrip;
-    },
+    factoryCurrentTrip: selectedTrip,
     factoryGetRecentTrip: function () {
         var promise = $http.get('/trips').then(function (response) {
             console.log(response.data);
@@ -45,10 +42,10 @@ myApp.factory('DataFactory', ['$http', function($http) {
               console.log("You don't have any trips yet.");
             }
             else {
-              selectedTrip = response.data[response.data.length - 1];
-              selectedTrip.departure = moment(selectedTrip.departure).format('MM/DD/YYYY');
-              selectedTrip.return = moment(selectedTrip.return).format('MM/DD/YYYY');
-              console.log('GET /trips ', selectedTrip);
+              selectedTrip.data = response.data[response.data.length - 1];
+              selectedTrip.data.departure = moment(selectedTrip.data.departure).format('MM/DD/YYYY');
+              selectedTrip.data.return = moment(selectedTrip.data.return).format('MM/DD/YYYY');
+              console.log(selectedTrip.data);
             }
           });
           return promise;

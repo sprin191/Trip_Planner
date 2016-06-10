@@ -2,7 +2,7 @@ myApp.controller('UserController', ['$scope', '$http', '$window', '$location', '
 $scope.dataFactory = DataFactory;
 $scope.hidden = true;
 $scope.message = "";
-$scope.recentTrip = "";
+$scope.recentTrip = {};
 
   getRecentTrip();
   loadLogin();
@@ -22,7 +22,8 @@ $scope.recentTrip = "";
 
     function getRecentTrip() {
       $scope.dataFactory.factoryGetRecentTrip().then(function() {
-      $scope.recentTrip = $scope.dataFactory.factoryCurrentTrip();
+      $scope.recentTrip = $scope.dataFactory.factoryCurrentTrip.data;
+      console.log($scope.recentTrip);
             if ($scope.recentTrip === undefined) {
               $scope.message = "You don't have any trips yet.";
             }

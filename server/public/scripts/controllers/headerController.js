@@ -2,7 +2,6 @@ myApp.controller('HeaderController', ['$scope', '$http', '$window', '$location',
 $scope.dataFactory = DataFactory;
 $scope.hidden = true;
 $scope.currentTrip = '';
-$scope.factoryCurrentTrip = '';
 
   loadLogin();
   getTrips();
@@ -11,7 +10,7 @@ $scope.factoryCurrentTrip = '';
     console.log($scope.currentTrip._id);
     if($scope.currentTrip !== '') {
       $scope.dataFactory.factoryGetSelectedTrip($scope.currentTrip._id).then(function() {
-        $scope.factoryCurrentTrip = $scope.dataFactory.factoryCurrentTrip();
+          $location.path ("/currentTrip");
       });
     }
   };

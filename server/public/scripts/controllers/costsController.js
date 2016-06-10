@@ -1,18 +1,32 @@
 myApp.controller('CostsController', ['$scope', '$http', '$window', '$location', 'DataFactory', function($scope, $http, $window, $location, DataFactory) {
 $scope.dataFactory = DataFactory;
-$scope.message = "";
-$scope.recentTrip = "";
+$scope.factoryCurrentTrip = $scope.dataFactory.factoryCurrentTrip;
+$scope.currentCostCategory = {};
 
-  getRecentTrip();
+  console.log($scope.factoryCurrentTrip.data.costs);
 
-    function getRecentTrip() {
-      $scope.dataFactory.factoryGetRecentTrip().then(function() {
-      $scope.recentTrip = $scope.dataFactory.factoryCurrentTrip();
-      console.log($scope.recentTrip.costs)
-            if ($scope.recentTrip === undefined) {
-              $scope.message = "You don't have any trips yet.";
-            }
+
+    $scope.submitNewCategory = function () {
+      console.log($scope.currentCostCategory);
+    $http.put('/selectedTrip/' + $scope.factoryCurrentTrip.data._id, $scope.currentCostCategory)
+      .then(function (response) {
+        console.log('PUT /selectedTrip/ ', $scope.currentCostCategory);
+        loadUpdatedTrip();
+      });
+  };
+
+    $scope.addNewItem = function (category) {
+      var categoryID = category._id;
+        $http.put('/selectedTrip/' + categoryID, category)
+          .then(function (response) {
+            console.log('PUT /selectedTrip ', category);
+            loadUpdatedTrip();
           });
-      }
+      };
+
+  function loadUpdatedTrip() {
+      $scope.dataFactory.factoryGetSelectedTrip($scope.factoryCurrentTrip.data._id);
+      $scope.factoryCurrentTrip = $scope.dataFactory.factoryCurrentTrip;
+    }
 
 }]);
