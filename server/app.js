@@ -13,6 +13,7 @@ var user = require('./routes/user');
 var register = require('./routes/register');
 var trips = require('./routes/trips');
 var selectedTrip = require('./routes/selectedTrip');
+var grocery = require('./routes/grocery');
 
 // Body parser middleware
 app.use(bodyParser.json());
@@ -42,6 +43,7 @@ app.use('/register', register);
 app.use('/user', user);
 app.use('/trips', trips);
 app.use('/selectedTrip', selectedTrip);
+app.use('/grocery', grocery);
 app.use('/*', index);
 
 // Mongo Connection //

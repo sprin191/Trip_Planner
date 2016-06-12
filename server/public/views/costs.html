@@ -34,12 +34,13 @@
                     <label for="expense_name">Name:</label>
                     <input type="text" id="expense_name" name="expense_name" ng-model="newExpense.expense_name" />
 
-                    <label for="cost">Cost:</label>
+                    <label for="cost">Cost: $</label>
                     <input type="number" id="cost" name="cost" ng-model="newExpense.cost" />
                   </li>
                   </ul>
                   <button class="addNewItem" ng-click="submitNewItem(cost._id)">Submit</button>
                   </div>
+                <h5>{{cost.category}} Total: $</h5>
                 </div>
 </section>
 

@@ -23,9 +23,9 @@ $scope.newExpense = {};
 
     $scope.submitNewItem = function (id) {
       var item = $scope.newExpense;
-        $http.put('/selectedTrip/' + $scope.factoryCurrentTrip.data._id + '/category/' + id + '/items', item)
+        $http.put('/selectedTrip/' + $scope.factoryCurrentTrip.data._id + '/category/' + id + '/item', item)
           .then(function (response) {
-            console.log('PUT /selectedTrip ', item);
+            console.log('PUT /selectedTrip/ ', item);
             loadUpdatedTrip();
           });
       };
@@ -33,12 +33,12 @@ $scope.newExpense = {};
   $scope.deleteItem = function (id1, id2) {
   $http.delete('/selectedTrip/' + $scope.factoryCurrentTrip.data._id + '/category/' + id1 + '/item/' + id2)
     .then(function (response) {
-      console.log('DELETE /item ', id2);
+      console.log('DELETE /item/ ', id2);
       loadUpdatedTrip();
       });
    };
 
-   $scope.getTotal = function(){
+   $scope.getTotal = function() {
     var total = 0;
     for(var i = 0; i < $scope.factoryCurrentTrip.data.costs.length; i++){
         var category = $scope.factoryCurrentTrip.data.costs[i];

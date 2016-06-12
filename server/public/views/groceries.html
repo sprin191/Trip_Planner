@@ -1,0 +1,43 @@
+<div class="container">
+<h1>{{factoryCurrentTrip.data.name}} Grocery List</h1>
+<section id="groceryCategorySubmission">
+      <form id="categoryForm">
+        <label for="groceryCategory">Create A New Category:</label>
+        <input type="text" id="currentGroceryCategory" name="groceryCategory" ng-model="currentGroceryCategory.category" />
+
+        <button ng-click="submitNewCategory()">Submit</button>
+
+      </form>
+</section>
+
+<section id="groceryCategories">
+          <div class = "categories" ng-repeat="grocery in factoryCurrentTrip.data.groceries">
+          <h3>{{grocery.category}}</h3>
+          <table class = "table table-bordered">
+            <thead ng-if="grocery.items.length !== 0">
+              <tr>
+                <th>Item</th>
+                <th>Purchased?</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class = "items" ng-repeat="item in grocery.items">
+                <td><button class="btnItem" ng-click="deleteItem(grocery._id, item._id)">x</button>   {{item.name}}</td>
+                <td><input type="checkbox" id="purchased" name="purchased" ng-click="updatePurchased(grocery._id, item._id)" ng-checked="item.purchased" /></td>
+              </tr>
+            </tbody>
+          </table>
+          <button class="newitem" ng-click="addItem(grocery._id)">Add New Item</button>
+              <div ng-show="displayedCategoryID == grocery._id">
+                <ul id="GroceryForm">
+                  <li class="name">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" ng-model="newItem.name" />
+                  </li>
+                  </ul>
+                  <button class="addNewItem" ng-click="submitNewItem(grocery._id)">Submit</button>
+                  </div>
+                </div>
+</section>
+
+</div>
