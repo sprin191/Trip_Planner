@@ -31,6 +31,10 @@ myApp.config(['$routeProvider', function($routeProvider) {
       templateUrl: '/views/currentTrip.html',
       controller: "CurrentTripController",
     })
+    .when('/mealPlan', {
+      templateUrl: '/views/mealPlan.html',
+      controller: "MealPlanController",
+    })
     .otherwise({
       redirectTo: 'home'
     });
