@@ -13,6 +13,7 @@ var user = require('./routes/user');
 var register = require('./routes/register');
 var trips = require('./routes/trips');
 var selectedTrip = require('./routes/selectedTrip');
+var cost = require('./routes/cost');
 var grocery = require('./routes/grocery');
 
 // Body parser middleware
@@ -43,6 +44,7 @@ app.use('/register', register);
 app.use('/user', user);
 app.use('/trips', trips);
 app.use('/selectedTrip', selectedTrip);
+app.use('/cost', cost);
 app.use('/grocery', grocery);
 app.use('/*', index);
 

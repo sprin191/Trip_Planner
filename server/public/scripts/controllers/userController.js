@@ -30,4 +30,17 @@ $scope.recentTrip = {};
           });
       }
 
+      $scope.deleteTrip = function () {
+        var confirmation = confirm("Are you sure you want to delete this trip?");
+        if (confirmation === true) {
+      $http.delete('/selectedTrip/' + $scope.recentTrip._id)
+        .then(function (response) {
+          console.log('DELETE /trip/ ', $scope.recentTrip._id);
+          location.reload();
+          $location.path ("/user");
+          });
+        }
+       };
+
+
 }]);

@@ -14,7 +14,7 @@ $scope.newExpense = {};
 
     $scope.submitNewCategory = function () {
       console.log($scope.currentCostCategory);
-    $http.put('/selectedTrip/' + $scope.factoryCurrentTrip.data._id, $scope.currentCostCategory)
+    $http.put('/cost/' + $scope.factoryCurrentTrip.data._id, $scope.currentCostCategory)
       .then(function (response) {
         console.log('PUT /selectedTrip/ ', $scope.currentCostCategory);
         loadUpdatedTrip();
@@ -23,7 +23,7 @@ $scope.newExpense = {};
 
     $scope.submitNewItem = function (id) {
       var item = $scope.newExpense;
-        $http.put('/selectedTrip/' + $scope.factoryCurrentTrip.data._id + '/category/' + id + '/item', item)
+        $http.put('/cost/' + $scope.factoryCurrentTrip.data._id + '/category/' + id + '/item', item)
           .then(function (response) {
             console.log('PUT /selectedTrip/ ', item);
             loadUpdatedTrip();
@@ -31,7 +31,7 @@ $scope.newExpense = {};
       };
 
   $scope.deleteItem = function (id1, id2) {
-  $http.delete('/selectedTrip/' + $scope.factoryCurrentTrip.data._id + '/category/' + id1 + '/item/' + id2)
+  $http.delete('/cost/' + $scope.factoryCurrentTrip.data._id + '/category/' + id1 + '/item/' + id2)
     .then(function (response) {
       console.log('DELETE /item/ ', id2);
       loadUpdatedTrip();
