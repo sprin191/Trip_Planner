@@ -4,6 +4,7 @@ $scope.factoryCurrentTrip = $scope.dataFactory.factoryCurrentTrip;
 $scope.currentCostCategory = {};
 $scope.displayedCategoryID = '';
 $scope.newExpense = {};
+$scope.categoryTotal = [];
 
   console.log($scope.factoryCurrentTrip.data.costs);
 
@@ -59,6 +60,22 @@ $scope.newExpense = {};
     console.log(total);
     return total;
 };
+
+/*$scope.getCategoryTotal = function() {
+  var total = 0;
+ for(var i = 0; i < $scope.factoryCurrentTrip.data.costs.length; i++){
+     var category = $scope.factoryCurrentTrip.data.costs[i];
+     total[i] = 0;
+     for(var j = 0; j < category.items.length; j++) {
+     var item = category.items[j].cost;
+     console.log(item);
+     total[i] += (item);
+     $scope.categoryTotal.push(total[i]);
+     }
+ }
+ console.log($scope.categoryTotal);
+ return $scope.categoryTotal;
+};*/
 
   function loadUpdatedTrip() {
       $scope.dataFactory.factoryGetSelectedTrip($scope.factoryCurrentTrip.data._id);

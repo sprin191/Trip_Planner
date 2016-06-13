@@ -110,3 +110,15 @@ img:hover {
   height: auto;
   font-size: 10px;
 }
+
+#noteBody {
+  width: 100%;
+  height: 150px;
+  padding: 12px 20px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  background-color: #f8f8f8;
+  font-size: 13px;
+  resize: none;
+}

@@ -2,7 +2,6 @@ myApp.controller('MealsController', ['$scope', '$http', '$window', '$location', 
 $scope.dataFactory = DataFactory;
 $scope.factoryCurrentTrip = $scope.dataFactory.factoryCurrentTrip;
 $scope.currentMealDate = {};
-$scope.displayedCategoryID = '';
 $scope.newItem = {};
 $scope.checkedItem = {};
 
@@ -12,7 +11,7 @@ $scope.checkedItem = {};
       console.log($scope.currentMealDate);
     $http.put('/meal/' + $scope.factoryCurrentTrip.data._id, $scope.currentMealDate)
       .then(function (response) {
-        console.log('PUT /selectedTrip/ ', $scope.currentMealDate);
+        console.log('PUT /meal/ ', $scope.currentMealDate);
         loadUpdatedTrip();
       });
   };
@@ -20,7 +19,7 @@ $scope.checkedItem = {};
   $scope.deleteDate = function (id) {
   $http.delete('/meal/' + $scope.factoryCurrentTrip.data._id + '/date/' + id)
     .then(function (response) {
-      console.log('DELETE /date/ ', id);
+      console.log('DELETE /meal/ ', id);
       loadUpdatedTrip();
       });
    };

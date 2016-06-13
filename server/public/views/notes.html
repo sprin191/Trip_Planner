@@ -1,0 +1,23 @@
+<div class="container">
+<h1>{{factoryCurrentTrip.data.name}} Notes</h1>
+<section id="noteSubmission">
+      <form id="noteForm">
+        <label for="noteTitle">Title:</label>
+        <input type="text" id="noteTitle" name="noteTitle" ng-model="currentNote.title" />
+        <br/>
+        <label for="noteBody">Entry:</label>
+        <textarea id="noteBody" ng-model="currentNote.body">Your note here...</textarea>
+
+        <button ng-click="submitNewNote()">Submit</button>
+
+      </form>
+</section>
+
+<section id="notes">
+          <div class="notes" ng-repeat="note in factoryCurrentTrip.data.notes">
+          <h3 class="noteTitleDisplay">{{note.title}}<button class="btnItem" ng-click="deleteNote(note._id)">x</button></h3>
+          <h5 class="noteBodyDisplay">{{note.body}}</h5>
+        </div>
+</section>
+
+</div>
