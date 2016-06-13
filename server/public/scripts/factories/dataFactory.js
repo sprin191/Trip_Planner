@@ -2,12 +2,12 @@ myApp.factory('DataFactory', ['$http', function($http) {
   console.log('dataFactory running');
 
   // PRIVATE
-  var userName = undefined;
+  var first_name = undefined;
   var selectedTrip = {};
 
   function getUser() {
     var promise = $http.get('/user').then(function(response) {
-      userName = response.data.username;
+      first_name = response.data.first_name;
     });
     return promise;
   }
@@ -19,7 +19,7 @@ myApp.factory('DataFactory', ['$http', function($http) {
       return getUser();
     },
     factoryCurrentUser: function() {
-      return userName;
+      return first_name;
     },
     factoryGetSelectedTrip: function (id) {
       var promise = $http.get('/selectedTrip/' + id).then(function (trip) {

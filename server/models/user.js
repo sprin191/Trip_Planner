@@ -7,6 +7,8 @@ var SALT_WORK_FACTOR = 10;
 var UserSchema = new Schema({
     username: {type: String, required: true, index: {unique: true}},
     password: {type: String, required: true},
+    first_name: {type: String},
+    last_name: {type: String},
     email: {type: String}
 });
 

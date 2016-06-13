@@ -3,6 +3,11 @@ $scope.dataFactory = DataFactory;
 $scope.hidden = true;
 $scope.message = "";
 $scope.recentTrip = {};
+$scope.includedTrip = "";
+$scope.newUser = "";
+$scope.errorMessage = "";
+$scope.successMessage ="";
+$scope.first_name ="";
 
   getRecentTrip();
   loadLogin();
@@ -10,13 +15,13 @@ $scope.recentTrip = {};
   function loadLogin () {
   if($scope.dataFactory.factoryCurrentUser() === undefined) {
       $scope.dataFactory.factoryRefreshUser().then(function() {
-        $scope.userName = $scope.dataFactory.factoryCurrentUser();
+        $scope.first_name = $scope.dataFactory.factoryCurrentUser();
         if ($scope.dataFactory.factoryCurrentUser() === undefined) {
           $location.path("/home");
         }
       });
     } else {
-      $scope.userName = $scope.dataFactory.factoryCurrentUser();
+      $scope.first_name = $scope.dataFactory.factoryCurrentUser();
     }
   }
 
@@ -41,5 +46,25 @@ $scope.recentTrip = {};
           });
         }
        };
+
+       $scope.addUser = function (tripName) {
+         $scope.includedTrip = tripName;
+         console.log(tripName);
+       };
+
+       $scope.submitUser = function () {
+         var email = $scope.newUser;
+         console.log($scope.newUser);
+       $http.put('/selectedTrip/' + $scope.recentTrip._id + '/email', email)
+         .then(function (response) {
+           if(response.data.error) {
+            $scope.errorMessage = response.data.error;
+           }
+           else {
+             $scope.errorMessage = "";
+             $scope.successMessage = "Success!";
+           }
+         });
+        };
 
 }]);
