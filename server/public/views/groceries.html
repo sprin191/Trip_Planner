@@ -23,7 +23,7 @@
             <tbody>
               <tr class = "items" ng-repeat="item in grocery.items">
                 <td><button class="btnItem" ng-click="deleteItem(grocery._id, item._id)">x</button>   {{item.name}}</td>
-                <td><input type="checkbox" id="purchased" name="purchased" checklist-model="checkedItem.purchased" checklist-value="item.puchased" ng-change="updatePurchased(grocery._id, item._id)" ng-checked="item.purchased" /></td>
+                <td><input type="checkbox" id="purchased" name="purchased" ng-checked="item.purchased" ng-model="item.purchased" ng-click="seeUpdate()"/></td>
               </tr>
             </tbody>
           </table>
@@ -39,5 +39,6 @@
                   </div>
                 </div>
 </section>
-
+<br/>
+<button class="saveUpdates" ng-click="updatePurchased(factoryCurrentTrip.data.groceries)">Save Changes</button>
 </div>

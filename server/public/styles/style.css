@@ -95,10 +95,7 @@ img:hover {
 
 .notePic {
   border-radius: 170px;
-  padding-top: 20px;
-  padding-bottom: 20px;
-  padding-right: 15px;
-  padding-left: 15px;
+  padding: 20px 15px 20px 15px;
 }
 
 .table {
@@ -111,7 +108,7 @@ img:hover {
   font-size: 10px;
 }
 
-#noteBody {
+.noteBody {
   width: 100%;
   height: 150px;
   padding: 12px 20px;

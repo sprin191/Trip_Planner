@@ -20,7 +20,7 @@
 </section>
 
 <section id="mealDates">
-          <div class="dates" ng-repeat="meal in factoryCurrentTrip.data.meals">
+          <div class="dates" ng-repeat="meal in factoryCurrentTrip.data.meals | orderBy: 'date'">
           <h3>{{meal.date}}<button class="btnItem" ng-click="deleteDate(meal._id)">x</button></h3>
           <ul class="meals">
             <li class="meal">Breakfast: {{meal.breakfast}}</li>

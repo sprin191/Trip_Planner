@@ -47,7 +47,7 @@ router.put('/:_id/category/:id/item/', function (req, res) {
   });
 });
 
-router.put('/:_id/category/:id1/item/:id2/status', function (req, res) {
+router.put('/:_id/update', function (req, res) {
   console.log(req.body);
   console.log(req.params);
   Trip.findById(req.params._id, function (err, trip) {
@@ -57,9 +57,7 @@ router.put('/:_id/category/:id1/item/:id2/status', function (req, res) {
       return;
     }
 
-    var doc = trip.groceries.id(req.params.id1).items.id(req.params.id2);
-    console.log(doc);
-    doc.purchased = req.body;
+    trip.groceries = req.body;
 
     trip.save(function (err) {
       if (err) {

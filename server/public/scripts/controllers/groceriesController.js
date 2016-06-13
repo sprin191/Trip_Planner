@@ -4,9 +4,12 @@ $scope.factoryCurrentTrip = $scope.dataFactory.factoryCurrentTrip;
 $scope.currentGroceryCategory = {};
 $scope.displayedCategoryID = '';
 $scope.newItem = {};
-$scope.checkedItem = {};
 
   console.log($scope.factoryCurrentTrip.data.groceries);
+
+$scope.seeUpdate = function () {
+  console.log($scope.factoryCurrentTrip.data.groceries);
+};
 
   $scope.addItem = function (id) {
     console.log('showAddItem', id);
@@ -32,12 +35,10 @@ $scope.checkedItem = {};
           });
       };
 
-      $scope.updatePurchased = function (id1, id2) {
-        var status = $scope.checkedItem;
-        console.log($scope.checkedItem);
-        $http.put('/grocery/' + $scope.factoryCurrentTrip.data._id + '/category/' + id1 + '/item/' + id2 + '/status', status)
+      $scope.updatePurchased = function (groceryData) {
+        $http.put('/grocery/' + $scope.factoryCurrentTrip.data._id + '/update', groceryData)
           .then(function (response) {
-            console.log('Put /item/ ', id2);
+            console.log('Put /item/ ', groceryData);
             loadUpdatedTrip();
             });
       };

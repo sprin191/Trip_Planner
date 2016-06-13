@@ -11,7 +11,7 @@
 </section>
 
 <section id="itineraryDates">
-          <div class = "dates" ng-repeat="date in factoryCurrentTrip.data.itinerary">
+          <div class = "dates" ng-repeat="date in factoryCurrentTrip.data.itinerary | orderBy: 'date'">
           <h3>{{date.date}}<button class="btnItem" ng-click="deleteDate(date._id)">x</button></h3>
           <ul class = "activities" ng-repeat="activity in date.activities">
             <li class = "activity">{{activity.activity}}<button class="btnItem" ng-click="deleteItem(date._id, activity._id)">x</button></li>
