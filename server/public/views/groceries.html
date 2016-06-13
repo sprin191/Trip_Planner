@@ -12,7 +12,7 @@
 
 <section id="groceryCategories">
           <div class = "categories" ng-repeat="grocery in factoryCurrentTrip.data.groceries">
-          <h3>{{grocery.category}}</h3>
+          <h3>{{grocery.category}}<button class="btnItem" ng-click="deleteCategory(grocery._id)">x</button></h3>
           <table class = "table table-bordered">
             <thead ng-if="grocery.items.length !== 0">
               <tr>

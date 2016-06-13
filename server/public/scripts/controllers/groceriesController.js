@@ -50,6 +50,14 @@ $scope.checkedItem = {};
       });
    };
 
+   $scope.deleteCategory = function (id) {
+   $http.delete('/grocery/' + $scope.factoryCurrentTrip.data._id + '/category/' + id)
+     .then(function (response) {
+       console.log('DELETE /item/ ', id);
+       loadUpdatedTrip();
+       });
+    };
+
   function loadUpdatedTrip() {
       $scope.dataFactory.factoryGetSelectedTrip($scope.factoryCurrentTrip.data._id);
       $scope.factoryCurrentTrip = $scope.dataFactory.factoryCurrentTrip;

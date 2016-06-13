@@ -38,6 +38,14 @@ $scope.newExpense = {};
       });
    };
 
+   $scope.deleteCategory = function (id) {
+   $http.delete('/cost/' + $scope.factoryCurrentTrip.data._id + '/category/' + id)
+     .then(function (response) {
+       console.log('DELETE /item/ ', id);
+       loadUpdatedTrip();
+       });
+    };
+
    $scope.getTotal = function() {
     var total = 0;
     for(var i = 0; i < $scope.factoryCurrentTrip.data.costs.length; i++){

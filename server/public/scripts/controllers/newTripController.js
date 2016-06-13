@@ -1,7 +1,6 @@
 myApp.controller('NewTripController', ['$scope', '$http', '$window', '$location', 'DataFactory', function($scope, $http, $window, $location, DataFactory) {
     $scope.dataFactory = DataFactory;
     $scope.currentTrip = {};
-    $scope.message = '';
 
     $scope.submitNewTrip = function () {
       var data = $scope.currentTrip;
@@ -11,7 +10,7 @@ myApp.controller('NewTripController', ['$scope', '$http', '$window', '$location'
         .then(function () {
           console.log('POST /trips');
           location.reload();
-          $scope.message = "Your new trip has been added!";
+          $location.path ("/user");
         });
     };
 

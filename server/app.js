@@ -15,6 +15,8 @@ var trips = require('./routes/trips');
 var selectedTrip = require('./routes/selectedTrip');
 var cost = require('./routes/cost');
 var grocery = require('./routes/grocery');
+var meal = require('./routes/meal');
+var itinerary1 = require('./routes/itinerary1');
 
 // Body parser middleware
 app.use(bodyParser.json());
@@ -46,6 +48,8 @@ app.use('/trips', trips);
 app.use('/selectedTrip', selectedTrip);
 app.use('/cost', cost);
 app.use('/grocery', grocery);
+app.use('/meal', meal);
+app.use('/itinerary1', itinerary1);
 app.use('/*', index);
 
 // Mongo Connection //

@@ -1,0 +1,33 @@
+<div class="container">
+<h1>{{factoryCurrentTrip.data.name}} Meal Plan</h1>
+<section id="mealSubmission">
+      <form id="mealForm">
+        <label for="currentDate">Add A New Day:</label>
+        <input type="date" id="currentDate" name="date" ng-model="currentMealDate.date" />
+
+        <label for="currentBreakfast">Breakfast:</label>
+        <input type="text" id="currentBreakfast" name="breakfast" ng-model="currentMealDate.breakfast" />
+
+        <label for="currentLunch">Lunch:</label>
+        <input type="text" id="currentLunch" name="lunch" ng-model="currentMealDate.lunch" />
+
+        <label for="currentDinner">Dinner:</label>
+        <input type="text" id="currentDinner" name="dinner" ng-model="currentMealDate.dinner" />
+
+        <button ng-click="submitNewDate()">Submit</button>
+
+      </form>
+</section>
+
+<section id="mealDates">
+          <div class="dates" ng-repeat="meal in factoryCurrentTrip.data.meals">
+          <h3>{{meal.date}}<button class="btnItem" ng-click="deleteDate(meal._id)">x</button></h3>
+          <ul class="meals">
+            <li class="meal">Breakfast: {{meal.breakfast}}</li>
+            <li class="meal">Lunch: {{meal.lunch}}</li>
+            <li class="meal">Dinner: {{meal.dinner}}</li>
+          </ul>
+        </div>
+</section>
+
+</div>

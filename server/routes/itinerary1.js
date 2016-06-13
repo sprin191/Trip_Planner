@@ -9,7 +9,7 @@ router.put('/:id', function (req, res) {
       res.sendStatus(500);
       return;
     }
-    trip.costs.push(req.body);
+    trip.itinerary.push(req.body);
     trip.save(function (err) {
       if (err) {
         res.sendStatus(500);
@@ -20,7 +20,7 @@ router.put('/:id', function (req, res) {
   });
 });
 
-router.put('/:_id/category/:id/item', function (req, res) {
+router.put('/:_id/date/:id/item/', function (req, res) {
   console.log(req.body);
   console.log(req.params);
   Trip.findById(req.params._id, function (err, trip) {
@@ -30,9 +30,9 @@ router.put('/:_id/category/:id/item', function (req, res) {
       return;
     }
 
-    var doc = trip.costs.id(req.params.id);
-    console.log(doc);
-    doc.items.push(req.body);
+    var doc = trip.itinerary.id(req.params.id);
+    console.log(req.body);
+    doc.activities.push(req.body);
 
     trip.save(function (err) {
       if (err) {
@@ -46,14 +46,15 @@ router.put('/:_id/category/:id/item', function (req, res) {
   });
 });
 
-router.delete('/:id/category/:id1', function (req, res) {
+
+router.delete('/:id/date/:id1', function (req, res) {
     Trip.findById(req.params.id, function (err, trip) {
     if (err) {
       res.sendStatus(500);
       return;
     }
 
-    var doc = trip.costs.id(req.params.id1).remove();
+    var doc = trip.itinerary.id(req.params.id1).remove();
     console.log(doc);
 
     trip.save(function (err) {
@@ -68,14 +69,14 @@ router.delete('/:id/category/:id1', function (req, res) {
   });
 });
 
-router.delete('/:_id/category/:id1/item/:id2', function (req, res) {
+router.delete('/:_id/date/:id1/item/:id2', function (req, res) {
     Trip.findById(req.params._id, function (err, trip) {
     if (err) {
       res.sendStatus(500);
       return;
     }
 
-    var doc = trip.costs.id(req.params.id1).items.id(req.params.id2).remove();
+    var doc = trip.itinerary.id(req.params.id1).activities.id(req.params.id2).remove();
     console.log(doc);
 
     trip.save(function (err) {

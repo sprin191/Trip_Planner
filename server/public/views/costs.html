@@ -1,5 +1,5 @@
 <div class="container">
-<h1>{{factoryCurrentTrip.data.name}} Costs</h1>
+<h1>{{factoryCurrentTrip.data.name}} Budget</h1>
 <section id="costCategorySubmission">
       <form id="categoryForm">
         <label for="costCategory">Create A New Category:</label>
@@ -12,7 +12,7 @@
 
 <section id="costCategories">
           <div class = "categories" ng-repeat="cost in factoryCurrentTrip.data.costs">
-          <h3>{{cost.category}}</h3>
+          <h3>{{cost.category}}<button class="btnItem" ng-click="deleteCategory(cost._id)">x</button></h3>
           <table class = "table table-bordered">
             <thead ng-if="cost.items.length !== 0">
               <tr>
