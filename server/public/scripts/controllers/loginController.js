@@ -35,7 +35,7 @@ myApp.controller('LoginController', ['$scope', '$http', '$window', '$location', 
         },
         function(response) {
           console.log('error');
-          $scope.message = "Please try again.";
+          $scope.message = "Please try again; username may already be taken.";
         });
       }
     };

@@ -2,9 +2,14 @@
     <div class="container">
         <h1 class="lead"><a href="#user" class="lead">Trip Cruncher</a></h1>
           <button ng-hide="hidden" class="btn btn-default logout" ng-click="logout()">Log Out</button>
-          <select ng-hide="hidden" class="selectTrip" ng-model="currentTrip" ng-options="trip.name for trip in trips track by trip._id" ng-change="loadSelectedTrip()">
-          <option value="">All Trips</option>
-          </select>
+          <div class="btn-group" uib-dropdown is-open="status.isopen">
+            <button ng-hide="hidden" id="single-button" type="button" class="selectTrip btn btn-primary" uib-dropdown-toggle ng-disabled="disabled">
+              All Trips <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="single-button">
+              <li class="tripChoices" ng-model="currentTrip" ng-repeat="trip in trips" ng-click="loadSelectedTrip(trip._id)"><a>{{trip.name}}</a></li>
+            </ul>
+          </div>
           <a ng-hide="hidden" class="btn btn-default newTrip" href="#newTrip">+</a>
     </div>
 </div>

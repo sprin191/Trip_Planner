@@ -11,6 +11,7 @@ $scope.first_name ="";
 
   getRecentTrip();
   loadLogin();
+  getGroupMembers();
 
   function loadLogin () {
   if($scope.dataFactory.factoryCurrentUser() === undefined) {
@@ -33,6 +34,17 @@ $scope.first_name ="";
               $scope.message = "You don't have any trips yet.";
             }
           });
+      }
+
+      function getGroupMembers() {
+        $scope.dataFactory.factoryGetRecentTrip().then(function() {
+        $scope.recentTrip = $scope.dataFactory.factoryCurrentTrip.data;
+        var tripID = $scope.dataFactory.factoryCurrentTrip.data._id;
+        $http.get('/selectedTrip/' + tripID + '/users/')
+          .then(function (response) {
+            console.log(response);
+          });
+        });
       }
 
       $scope.deleteTrip = function () {
@@ -65,6 +77,6 @@ $scope.first_name ="";
              $scope.successMessage = "Success!";
            }
          });
-        };
+       };
 
 }]);

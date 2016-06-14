@@ -1,15 +1,13 @@
 myApp.controller('HeaderController', ['$scope', '$http', '$window', '$location', 'DataFactory', function($scope, $http, $window, $location, DataFactory) {
 $scope.dataFactory = DataFactory;
 $scope.hidden = true;
-$scope.currentTrip = '';
 
   loadLogin();
   getTrips();
 
-  $scope.loadSelectedTrip = function() {
-    console.log($scope.currentTrip._id);
-    if($scope.currentTrip !== '') {
-      $scope.dataFactory.factoryGetSelectedTrip($scope.currentTrip._id).then(function() {
+  $scope.loadSelectedTrip = function(id) {
+    if(id !== '') {
+      $scope.dataFactory.factoryGetSelectedTrip(id).then(function() {
           $location.path ("/currentTrip");
       });
     }

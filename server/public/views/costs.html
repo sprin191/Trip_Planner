@@ -40,10 +40,8 @@
                   </ul>
                   <button class="addNewItem" ng-click="submitNewItem(cost._id)">Submit</button>
                   </div>
-                <h5>{{cost.category}} Total: $</h5>
-                <h5>getCategoryTotal()</h5>
                 </div>
 </section>
 
-<h3>TOTAL COST: ${{ getTotal() }}</h3>
+<h3 ng-if="factoryCurrentTrip.data.costs.length > 0">TOTAL COST: ${{ getTotal() }}</h3><h3 ng-if="factoryCurrentTrip.data.users.length > 1 && factoryCurrentTrip.data.costs.length > 0"> GROUP TOTAL (COST PER PERSON): ${{ getGroupTotal() }}</h3>
 </div>

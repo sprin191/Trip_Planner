@@ -14,6 +14,33 @@ router.get('/:id', function (req, res) {
   });
 });
 
+router.get('/:id/users', function (req, res) {
+  var userData = {
+    userArray : []
+  };
+  Trip.find({ _id: req.params.id}, function (err, trip) {
+    if (err) {
+      res.sendStatus(500);
+      return;
+    }
+    console.log(trip[0].users[1]);
+
+    for (var i = 0; i < trip[0].users.length; i++) {
+      User.find({_id: trip[0].users[i]}, function (err, user) {
+        console.log(user[0].first_name);
+      if (err) {
+        res.sendStatus(500);
+        return;
+      }
+      userData.userArray.push(user[0]);
+      console.log(userData);
+    });
+    console.log(userData);
+    }
+    res.send(userData);
+  });
+});
+
 router.delete('/:id', function (req, res) {
   Trip.findByIdAndRemove(req.params.id, function (err) {
     if (err) {

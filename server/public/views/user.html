@@ -13,6 +13,7 @@
       <a href="#notes"><img class="notePic" src="/images/pencil.png"/></a>
     </div>
 </div>
+<h3 ng-if="recentTrip.users.length > 1" ng-repeat="user in recentTrip.users">{{user.first_name}} {{user.last_name}}</h3>
 <button ng-click="deleteTrip()">Delete {{recentTrip.name}}</button>
 <button ng-click="addUser(recentTrip.name)">Add A Trip Member</button>
 <h3>{{errorMessage}}</h3>

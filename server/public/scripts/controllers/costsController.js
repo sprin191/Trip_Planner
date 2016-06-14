@@ -53,13 +53,25 @@ $scope.categoryTotal = [];
         var category = $scope.factoryCurrentTrip.data.costs[i];
         for(var j = 0; j < category.items.length; j++) {
         var item = category.items[j].cost;
-        console.log(item);
         total += (item);
         }
     }
-    console.log(total);
     return total;
 };
+
+    $scope.getGroupTotal = function() {
+      var total = 0;
+      var groupTotal = 0;
+      for (var i = 0; i < $scope.factoryCurrentTrip.data.costs.length; i++){
+          var category = $scope.factoryCurrentTrip.data.costs[i];
+          for(var j = 0; j < category.items.length; j++) {
+          var item = category.items[j].cost;
+          total += (item);
+          }
+      }
+      groupTotal = total / $scope.factoryCurrentTrip.data.users.length;
+      return groupTotal.toFixed(2);
+    };
 
 /*$scope.getCategoryTotal = function() {
   var total = 0;
