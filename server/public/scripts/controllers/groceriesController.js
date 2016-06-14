@@ -5,7 +5,13 @@ $scope.currentGroceryCategory = {};
 $scope.displayedCategoryID = '';
 $scope.newItem = {};
 
-  console.log($scope.factoryCurrentTrip.data.groceries);
+console.log($scope.dataFactory.factoryCurrentTrip);
+
+if($scope.dataFactory.factoryCurrentTrip.data === undefined) {
+  console.log($scope.dataFactory.factoryCurrentLocalStorage());
+  $scope.factoryCurrentTrip = $scope.dataFactory.factoryCurrentLocalStorage();
+  console.log($scope.factoryCurrentTrip.data);
+}
 
 $scope.seeUpdate = function () {
   console.log($scope.factoryCurrentTrip.data.groceries);

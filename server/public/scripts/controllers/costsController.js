@@ -6,7 +6,13 @@ $scope.displayedCategoryID = '';
 $scope.newExpense = {};
 $scope.categoryTotal = [];
 
-  console.log($scope.factoryCurrentTrip.data.costs);
+  console.log($scope.dataFactory.factoryCurrentTrip);
+
+  if($scope.dataFactory.factoryCurrentTrip.data === undefined) {
+    console.log($scope.dataFactory.factoryCurrentLocalStorage());
+    $scope.factoryCurrentTrip = $scope.dataFactory.factoryCurrentLocalStorage();
+    console.log($scope.factoryCurrentTrip.data);
+  }
 
   $scope.addItem = function (id) {
     console.log('showAddItem', id);

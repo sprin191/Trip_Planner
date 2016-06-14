@@ -8,6 +8,7 @@ $scope.newUser = "";
 $scope.errorMessage = "";
 $scope.successMessage ="";
 $scope.first_name ="";
+$scope.userInfo="";
 
   getRecentTrip();
   loadLogin();
@@ -42,10 +43,21 @@ $scope.first_name ="";
         var tripID = $scope.dataFactory.factoryCurrentTrip.data._id;
         $http.get('/selectedTrip/' + tripID + '/users/')
           .then(function (response) {
-            console.log(response);
+            $scope.userInfo = response.data;
           });
         });
       }
+
+      $scope.deleteMember = function (id) {
+        var confirmation = confirm("Are you sure you want to remove this user from the trip?");
+        if (confirmation === true) {
+      $http.delete('/selectedTrip/' + $scope.recentTrip._id + '/' + id)
+        .then(function (response) {
+          console.log('DELETE /user/ ', $scope.recentTrip._id);
+          location.reload();
+          });
+        }
+       };
 
       $scope.deleteTrip = function () {
         var confirmation = confirm("Are you sure you want to delete this trip?");
@@ -54,7 +66,6 @@ $scope.first_name ="";
         .then(function (response) {
           console.log('DELETE /trip/ ', $scope.recentTrip._id);
           location.reload();
-          $location.path ("/user");
           });
         }
        };

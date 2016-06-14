@@ -7,6 +7,14 @@ $scope.newUser = "";
 $scope.errorMessage = "";
 $scope.successMessage ="";
 
+console.log($scope.dataFactory.factoryCurrentTrip);
+
+if($scope.dataFactory.factoryCurrentTrip.data === undefined) {
+  console.log($scope.dataFactory.factoryCurrentLocalStorage());
+  $scope.factoryCurrentTrip = $scope.dataFactory.factoryCurrentLocalStorage();
+  console.log($scope.factoryCurrentTrip.data);
+}
+
 $scope.deleteTrip = function () {
   var confirmation = confirm("Are you sure you want to delete this trip?");
   if (confirmation === true) {

@@ -23,21 +23,19 @@ router.get('/:id/users', function (req, res) {
       res.sendStatus(500);
       return;
     }
-    console.log(trip[0].users[1]);
 
     for (var i = 0; i < trip[0].users.length; i++) {
       User.find({_id: trip[0].users[i]}, function (err, user) {
-        console.log(user[0].first_name);
       if (err) {
         res.sendStatus(500);
         return;
       }
       userData.userArray.push(user[0]);
-      console.log(userData);
+      if (userData.userArray.length === trip[0].users.length) {
+      res.send(userData);
+      }
     });
-    console.log(userData);
     }
-    res.send(userData);
   });
 });
 
@@ -47,10 +45,30 @@ router.delete('/:id', function (req, res) {
       res.sendStatus(500);
       return;
     }
-
     res.sendStatus(204);
   });
 });
+
+router.delete('/:id/:userid', function (req, res) {
+  // Trip.findById(req.params.id, function (err, trip) {
+  //   if (err) {
+  //     res.sendStatus(500);
+  //     return;
+  //   }
+    console.log('user id to pull: ', req.params.userid);
+    Trip.update(
+      { _id: req.params.id },
+      { $pull: { users: req.params.userid } },
+      { multi: true },
+      function(err, rawResponse) {
+        if(err) {
+          console.log('error removing user ', err);
+        }
+        res.sendStatus(204);
+      }
+    );
+    // });
+  });
 
 router.put('/:id/email', function (req, res) {
   User.find({ email: req.body.email }, function (err, user) {

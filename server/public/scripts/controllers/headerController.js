@@ -3,7 +3,6 @@ $scope.dataFactory = DataFactory;
 $scope.hidden = true;
 
   loadLogin();
-  getTrips();
 
   $scope.loadSelectedTrip = function(id) {
     if(id !== '') {
@@ -21,6 +20,9 @@ $scope.hidden = true;
         if ($scope.dataFactory.factoryCurrentUser() === undefined) {
           $location.path("/home");
           $scope.hidden = true;
+        }
+        if ($scope.dataFactory.factoryCurrentUser() !== undefined) {
+          getTrips();
         }
       });
     } else {

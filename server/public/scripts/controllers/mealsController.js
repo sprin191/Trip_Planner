@@ -5,7 +5,13 @@ $scope.currentMealDate = {};
 $scope.newItem = {};
 $scope.checkedItem = {};
 
-  console.log($scope.factoryCurrentTrip.data.meals);
+console.log($scope.dataFactory.factoryCurrentTrip);
+
+if($scope.dataFactory.factoryCurrentTrip.data === undefined) {
+  console.log($scope.dataFactory.factoryCurrentLocalStorage());
+  $scope.factoryCurrentTrip = $scope.dataFactory.factoryCurrentLocalStorage();
+  console.log($scope.factoryCurrentTrip.data);
+}
 
     $scope.submitNewDate = function () {
       console.log($scope.currentMealDate);
