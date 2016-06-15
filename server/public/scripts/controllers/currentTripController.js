@@ -11,9 +11,7 @@ $scope.userInfo="";
 console.log($scope.dataFactory.factoryCurrentTrip);
 
 if($scope.dataFactory.factoryCurrentTrip.data === undefined) {
-  console.log($scope.dataFactory.factoryCurrentLocalStorage());
   $scope.factoryCurrentTrip = $scope.dataFactory.factoryCurrentLocalStorage();
-  console.log($scope.factoryCurrentTrip.data);
   $scope.dataFactory.factoryGetSelectedTrip($scope.factoryCurrentTrip.data._id).then(function() {
   $scope.factoryCurrentTrip = $scope.dataFactory.factoryCurrentTrip;
   var tripID = $scope.factoryCurrentTrip.data._id;
@@ -43,7 +41,6 @@ $scope.deleteTrip = function () {
   if (confirmation === true) {
 $http.delete('/selectedTrip/' + $scope.factoryCurrentTrip.data._id)
   .then(function (response) {
-    console.log('DELETE /trip/ ', $scope.factoryCurrentTrip.data._id);
     location.reload();
     $location.path ("/user");
     });
@@ -55,7 +52,6 @@ $http.delete('/selectedTrip/' + $scope.factoryCurrentTrip.data._id)
    if (confirmation === true) {
  $http.delete('/selectedTrip/' + $scope.factoryCurrentTrip.data._id + '/' + id)
    .then(function (response) {
-     console.log('DELETE /user/ ', $scope.factoryCurrentTrip.data._id);
      location.reload();
      });
    }
@@ -63,13 +59,10 @@ $http.delete('/selectedTrip/' + $scope.factoryCurrentTrip.data._id)
 
  $scope.addUser = function (tripName) {
    $scope.includedTrip = tripName;
-   console.log(tripName);
  };
 
  $scope.submitUser = function () {
    var email = $scope.newUser;
-   console.log($scope.newUser);
-   console.log($scope.factoryCurrentTrip.data.users);
  $http.put('/selectedTrip/' + $scope.factoryCurrentTrip.data._id + '/email', email)
    .then(function (response) {
      if(response.data.error) {
@@ -78,7 +71,6 @@ $http.delete('/selectedTrip/' + $scope.factoryCurrentTrip.data._id)
      else {
        $scope.errorMessage = "";
        $scope.successMessage = "Success!";
-       console.log($scope.dataFactory.factoryCurrentTrip.data.users);
        location.reload();
      }
    });

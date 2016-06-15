@@ -4,6 +4,7 @@ $scope.factoryCurrentTrip = $scope.dataFactory.factoryCurrentTrip;
 $scope.currentItineraryDate = {};
 $scope.displayedDateID = '';
 $scope.newActivity = {};
+$scope.deleteBtns = '';
 
 console.log($scope.dataFactory.factoryCurrentTrip);
 
@@ -12,6 +13,10 @@ if($scope.dataFactory.factoryCurrentTrip.data === undefined) {
   $scope.factoryCurrentTrip = $scope.dataFactory.factoryCurrentLocalStorage();
   console.log($scope.factoryCurrentTrip.data);
 }
+
+$scope.showDeleteBtns = function () {
+  $scope.deleteBtns = $scope.factoryCurrentTrip.data._id;
+};
 
   $scope.addItem = function (id) {
     console.log('showAddItem', id);

@@ -4,6 +4,7 @@ $scope.factoryCurrentTrip = $scope.dataFactory.factoryCurrentTrip;
 $scope.currentGroceryCategory = {};
 $scope.displayedCategoryID = '';
 $scope.newItem = {};
+$scope.deleteBtns = '';
 
 console.log($scope.dataFactory.factoryCurrentTrip);
 
@@ -12,6 +13,10 @@ if($scope.dataFactory.factoryCurrentTrip.data === undefined) {
   $scope.factoryCurrentTrip = $scope.dataFactory.factoryCurrentLocalStorage();
   console.log($scope.factoryCurrentTrip.data);
 }
+
+$scope.showDeleteBtns = function () {
+  $scope.deleteBtns = $scope.factoryCurrentTrip.data._id;
+};
 
 $scope.seeUpdate = function () {
   console.log($scope.factoryCurrentTrip.data.groceries);
@@ -41,12 +46,15 @@ $scope.seeUpdate = function () {
           });
       };
 
-      $scope.updatePurchased = function (groceryData) {
-        $http.put('/grocery/' + $scope.factoryCurrentTrip.data._id + '/update', groceryData)
-          .then(function (response) {
-            console.log('Put /item/ ', groceryData);
-            loadUpdatedTrip();
-            });
+
+
+  $scope.updatePurchased = function (groceryData) {
+    $http.put('/grocery/' + $scope.factoryCurrentTrip.data._id + '/update', groceryData)
+      .then(function (response) {
+        console.log('Put /item/ ', groceryData);
+        $scope.successMessage = "Updates saved.";
+        loadUpdatedTrip();
+        });
       };
 
   $scope.deleteItem = function (id1, id2) {

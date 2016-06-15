@@ -30,7 +30,7 @@ $scope.userInfo="";
     function getRecentTrip() {
       $scope.dataFactory.factoryGetRecentTrip().then(function() {
       $scope.recentTrip = $scope.dataFactory.factoryCurrentTrip.data;
-      console.log($scope.recentTrip);
+      //console.log($scope.recentTrip);
             if ($scope.recentTrip === undefined) {
               $scope.message = "You don't have any trips yet.";
             }
@@ -40,11 +40,13 @@ $scope.userInfo="";
       function getGroupMembers() {
         $scope.dataFactory.factoryGetRecentTrip().then(function() {
         $scope.recentTrip = $scope.dataFactory.factoryCurrentTrip.data;
+        if ($scope.recentTrip !== undefined) {
         var tripID = $scope.dataFactory.factoryCurrentTrip.data._id;
         $http.get('/selectedTrip/' + tripID + '/users/')
           .then(function (response) {
             $scope.userInfo = response.data;
           });
+        }
         });
       }
 
@@ -53,7 +55,7 @@ $scope.userInfo="";
         if (confirmation === true) {
       $http.delete('/selectedTrip/' + $scope.recentTrip._id + '/' + id)
         .then(function (response) {
-          console.log('DELETE /user/ ', $scope.recentTrip._id);
+          //console.log('DELETE /user/ ', $scope.recentTrip._id);
           location.reload();
           });
         }
@@ -64,7 +66,7 @@ $scope.userInfo="";
         if (confirmation === true) {
       $http.delete('/selectedTrip/' + $scope.recentTrip._id)
         .then(function (response) {
-          console.log('DELETE /trip/ ', $scope.recentTrip._id);
+          //console.log('DELETE /trip/ ', $scope.recentTrip._id);
           location.reload();
           });
         }
@@ -72,12 +74,12 @@ $scope.userInfo="";
 
        $scope.addUser = function (tripName) {
          $scope.includedTrip = tripName;
-         console.log(tripName);
+         //console.log(tripName);
        };
 
        $scope.submitUser = function () {
          var email = $scope.newUser;
-         console.log($scope.newUser);
+         //console.log($scope.newUser);
        $http.put('/selectedTrip/' + $scope.recentTrip._id + '/email', email)
          .then(function (response) {
            if(response.data.error) {

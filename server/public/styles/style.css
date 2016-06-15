@@ -1,3 +1,21 @@
+@font-face {
+  font-family: 'Istok Web';
+  src: url("/vendors/fonts/Istok_Web/IstokWeb-Regular.ttf");
+}
+
+@font-face {
+  font-family: 'Amaranth';
+  src: url("/vendors/fonts/Amaranth/Amaranth-Regular.ttf");
+}
+
+body {
+  font-family: 'Istok Web';
+}
+
+.headerContainer {
+  font-family: 'Amaranth';
+}
+
 .header .container h1 {
     font-size: 24px;
     font-weight: 700;
@@ -6,6 +24,7 @@
 .header {
     background-color: #333333;
     color: #DDDDDD;
+    padding: 25px;
 }
 
 #entryForm {
@@ -40,11 +59,11 @@
     margin-left: 10px;
 }
 
-.logout, .lead {
+.logout {
     display: inline;
 }
 
-.newTrip, .logout, .selectTrip {
+.newTrip, .logout, .dropdown {
   float: right;
   margin: 5px;
 }
@@ -53,30 +72,25 @@
   cursor:pointer;
 }
 
-.header {
-  padding: 25px;
-  margin-bottom: 10px;
-}
-
 .content {
   text-align: center;
 }
 
-.lead {
+.currentTrip{
     color: #DDDDDD !important;
     text-decoration: inherit;
-
+    display: inline;
 }
 
-.lead:hover {
+.currentTrip:hover {
   text-decoration: inherit;
 }
 
-.lead:link {
+.currentTrip:link {
   text-decoration: inherit;
 }
 
-img {
+.costPic, .groceryPic, .itineraryPic, .mealPic, .notePic  {
   max-height: 150px;
   width: auto;
   border-radius: 80px;
@@ -84,7 +98,7 @@ img {
   margin: 10px;
 }
 
-img:hover {
+.costPic:hover, .groceryPic:hover, .itineraryPic:hover, .mealPic:hover, .notePic:hover {
   opacity: 0.50;
 }
 
@@ -102,12 +116,6 @@ img:hover {
   max-width: 350px;
 }
 
-.btnItem {
-  max-width: 20px;
-  height: auto;
-  font-size: 10px;
-}
-
 .noteBody {
   width: 100%;
   height: 150px;
@@ -118,4 +126,63 @@ img:hover {
   background-color: #f8f8f8;
   font-size: 13px;
   resize: none;
+}
+
+#noteTitle {
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  background-color: #f8f8f8;
+}
+
+.dates {
+  font-style: italic;
+}
+
+.simple {
+  margin: 5px;
+}
+
+.deletePic {
+  max-height: 20px;
+  width: auto;
+}
+
+.btnItem {
+  max-height: 35px;
+  padding: 5px;
+  margin: 3px;
+  opacity: .40;
+}
+
+.btnItem:hover {
+  opacity: 1;
+}
+
+.btn-secondary {
+    color: #373a3c;
+    background-color: #fff;
+    border-color: #ccc;
+}
+
+.btn-secondary:hover {
+    color: #373a3c;
+    background-color: #e6e6e6;
+    border-color: #adadad;
+}
+
+.groceryCategory {
+  text-decoration: underline;
+}
+
+.newItem {
+  font-size: 13px;
+  padding: 5px;
+}
+
+#purchased {
+  margin-right: 5px;
+}
+
+.noteTitleDisplay {
+  text-decoration: underline;
 }

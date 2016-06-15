@@ -4,6 +4,8 @@ $scope.factoryCurrentTrip = $scope.dataFactory.factoryCurrentTrip;
 $scope.currentNote = {};
 $scope.newItem = {};
 $scope.checkedItem = {};
+$scope.deleteBtns = '';
+$scope.addNote = '';
 
 console.log($scope.dataFactory.factoryCurrentTrip);
 
@@ -20,6 +22,15 @@ if($scope.dataFactory.factoryCurrentTrip.data === undefined) {
         console.log('PUT /note/ ', $scope.currentNote);
         loadUpdatedTrip();
       });
+  };
+
+  $scope.addItem = function () {
+    console.log($scope.factoryCurrentTrip.data.notes.length);
+    $scope.addNote = $scope.factoryCurrentTrip.data.notes.length;
+  };
+
+  $scope.showDeleteBtns = function () {
+    $scope.deleteBtns = $scope.factoryCurrentTrip.data._id;
   };
 
   $scope.deleteNote = function (id) {

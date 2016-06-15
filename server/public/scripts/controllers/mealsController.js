@@ -4,6 +4,7 @@ $scope.factoryCurrentTrip = $scope.dataFactory.factoryCurrentTrip;
 $scope.currentMealDate = {};
 $scope.newItem = {};
 $scope.checkedItem = {};
+$scope.deleteBtns = '';
 
 console.log($scope.dataFactory.factoryCurrentTrip);
 
@@ -13,13 +14,17 @@ if($scope.dataFactory.factoryCurrentTrip.data === undefined) {
   console.log($scope.factoryCurrentTrip.data);
 }
 
-    $scope.submitNewDate = function () {
-      console.log($scope.currentMealDate);
+$scope.showDeleteBtns = function () {
+  $scope.deleteBtns = $scope.factoryCurrentTrip.data._id;
+};
+
+$scope.submitNewDate = function () {
+  console.log($scope.currentMealDate);
     $http.put('/meal/' + $scope.factoryCurrentTrip.data._id, $scope.currentMealDate)
       .then(function (response) {
         console.log('PUT /meal/ ', $scope.currentMealDate);
         loadUpdatedTrip();
-      });
+    });
   };
 
   $scope.deleteDate = function (id) {

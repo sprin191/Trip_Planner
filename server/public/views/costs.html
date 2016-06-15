@@ -1,18 +1,18 @@
 <div class="container">
-<h1>{{factoryCurrentTrip.data.name}} Budget</h1>
+<h1>{{factoryCurrentTrip.data.name}} Budget <button class="btn btn-secondary" ng-hide="factoryCurrentTrip.data._id === deleteBtns" ng-if="factoryCurrentTrip.data.costs.length > 0" ng-click="showDeleteBtns()">Edit/Delete Item(s)</button></h1>
 <section id="costCategorySubmission">
       <form id="categoryForm">
         <label for="costCategory">Create A New Category:</label>
         <input type="text" id="currentCostCategory" name="costCategory" ng-model="currentCostCategory.category" />
 
-        <button ng-click="submitNewCategory()">Submit</button>
+        <button class="btn btn-secondary" ng-click="submitNewCategory()">Submit</button>
 
       </form>
 </section>
 
 <section id="costCategories">
           <div class = "categories" ng-repeat="cost in factoryCurrentTrip.data.costs">
-          <h3>{{cost.category}}<button class="btnItem" ng-click="deleteCategory(cost._id)">x</button></h3>
+          <h3>{{cost.category}}<button class="btnItem btn btn-secondary" ng-if="factoryCurrentTrip.data._id=== deleteBtns" ng-click="deleteCategory(cost._id)"><img class="deletePic" src="/images/trash_icon2.png"/></button></h3>
           <table class = "table table-bordered">
             <thead ng-if="cost.items.length !== 0">
               <tr>
@@ -22,13 +22,13 @@
             </thead>
             <tbody>
               <tr class = "items" ng-repeat="item in cost.items">
-                <td><button class="btnItem" ng-click="deleteItem(cost._id, item._id)">x</button>   {{item.expense_name}}</td>
+                <td><button class="btnItem btn btn-secondary" ng-if="factoryCurrentTrip.data._id === deleteBtns" ng-click="deleteItem(cost._id, item._id)"><img class="deletePic" src="/images/trash_icon2.png"/></button>   {{item.expense_name}}</td>
                 <td>${{item.cost}}</td>
               </tr>
             </tbody>
           </table>
-          <button class="newitem" ng-click="addItem(cost._id)">Add New Item</button>
-              <div ng-show="displayedCategoryID == cost._id">
+          <button class="newitem btn btn-secondary" ng-hide="displayedCategoryID === cost._id" ng-click="addItem(cost._id)">Add New Item</button>
+              <div ng-show="displayedCategoryID === cost._id">
                 <ul id="costForm">
                   <li class="expense">
                     <label for="expense_name">Name:</label>
@@ -38,7 +38,7 @@
                     <input type="number" id="cost" name="cost" ng-model="newExpense.cost" />
                   </li>
                   </ul>
-                  <button class="addNewItem" ng-click="submitNewItem(cost._id)">Submit</button>
+                  <button class="addNewItem btn btn-secondary" ng-click="submitNewItem(cost._id)">Submit</button>
                   </div>
                 </div>
 </section>

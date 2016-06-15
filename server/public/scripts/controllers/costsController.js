@@ -5,6 +5,7 @@ $scope.currentCostCategory = {};
 $scope.displayedCategoryID = '';
 $scope.newExpense = {};
 $scope.categoryTotal = [];
+$scope.deleteBtns = '';
 
   console.log($scope.dataFactory.factoryCurrentTrip);
 
@@ -13,6 +14,10 @@ $scope.categoryTotal = [];
     $scope.factoryCurrentTrip = $scope.dataFactory.factoryCurrentLocalStorage();
     console.log($scope.factoryCurrentTrip.data);
   }
+
+  $scope.showDeleteBtns = function () {
+    $scope.deleteBtns = $scope.factoryCurrentTrip.data._id;
+  };
 
   $scope.addItem = function (id) {
     console.log('showAddItem', id);

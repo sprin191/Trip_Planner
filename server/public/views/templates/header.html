@@ -1,7 +1,7 @@
 <div class="header" ng-controller="HeaderController">
-    <div class="container">
-        <h1 class="lead"><a href="#currentTrip" class="lead">Trip Cruncher</a></h1>
-          <button ng-hide="hidden" class="btn btn-default logout" ng-click="logout()">Log Out</button>
+    <div class="container headerContainer">
+        <h1 class="currentTrip"><a href="#currentTrip" class="currentTrip">Trip Cruncher</a></h1>
+          <button ng-hide="hidden" class="btn btn-primary logout" ng-click="logout()">Log Out</button>
           <div class="btn-group" uib-dropdown is-open="status.isopen">
             <button ng-hide="hidden" id="single-button" type="button" class="selectTrip btn btn-primary" uib-dropdown-toggle ng-disabled="disabled">
               All Trips <span class="caret"></span>
@@ -10,6 +10,6 @@
               <li class="tripChoices" ng-model="currentTrip" ng-repeat="trip in trips" ng-click="loadSelectedTrip(trip._id)"><a>{{trip.name}}</a></li>
             </ul>
           </div>
-          <a ng-hide="hidden" class="btn btn-default newTrip" href="#newTrip">+</a>
+          <a ng-hide="hidden" class="btn btn-primary newTrip" href="#newTrip">+</a>
     </div>
 </div>

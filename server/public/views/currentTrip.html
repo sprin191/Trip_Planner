@@ -2,7 +2,7 @@
     <div class="selectedTrip">
       <h1>{{factoryCurrentTrip.data.name}}</h1>
       <h2>{{factoryCurrentTrip.data.destination}}</h2>
-      <h3>{{factoryCurrentTrip.data.departure}} - {{factoryCurrentTrip.data.return}}</h3>
+      <h3 class = "dates">{{factoryCurrentTrip.data.departure}} - {{factoryCurrentTrip.data.return}}</h3>
     <div class="col-md-12 images">
       <a href="#costs"><img class="costPic" src="/images/print-dollar-sign-small.png"/></a>
       <a href="#groceries"><img class="groceryPic" src="/images/groceries1.jpg"/></a>
@@ -11,21 +11,19 @@
       <a href="#notes"><img class="notePic" src="/images/pencil.png"/></a>
     </div>
 </div>
-<button ng-click="deleteTrip()">Delete {{factoryCurrentTrip.data.name}}</button>
-<h3 ng-if="factoryCurrentTrip.data.users.length > 1">Trip Members:</h3>
-<div ng-if="factoryCurrentTrip.data.users.length > 1" ng-repeat="user in userInfo.userArray">
-  <p class="groupMembers">{{user.first_name}} {{user.last_name}}<button ng-click="deleteMember(user._id)">Delete Member</button></p>
-</div>
-<button ng-click="addUser(factoryCurrentTrip.data.name)">Add A Trip Member</button>
+<button ng-click="deleteTrip()" class="btn btn-secondary">Delete {{factoryCurrentTrip.data.name}}</button>
+<button ng-click="addUser(factoryCurrentTrip.data.name)" class="btn btn-secondary">Add A Trip Member</button>
 <h3>{{errorMessage}}</h3>
 <h3>{{successMessage}}</h3>
 <div ng-show="includedTrip == factoryCurrentTrip.data.name">
-  <ul id="addUserForm">
-    <li class="email">
+  <div class="addUserForm">
       <label for="email">User's E-mail Address:</label>
       <input type="text" name="email" ng-model="newUser.email" />
-    </li>
-    </ul>
-    <button class="addNewUser" ng-click="submitUser()">Submit</button>
+    <button class="addNewUser btn btn-secondary" ng-click="submitUser()">Submit</button>
     </div>
+</div>
+<h3 ng-if="factoryCurrentTrip.data.users.length > 1">Trip Members:</h3>
+<div ng-if="factoryCurrentTrip.data.users.length > 1" ng-repeat="user in userInfo.userArray">
+  <p class="groupMembers">{{user.first_name}} {{user.last_name}}<button ng-click="deleteMember(user._id)" class="simple btn btn-secondary">Delete Member</button></p>
+</div>
 </div>
