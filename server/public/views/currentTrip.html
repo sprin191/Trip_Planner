@@ -12,10 +12,14 @@
     </div>
 </div>
 <button ng-click="deleteTrip()">Delete {{factoryCurrentTrip.data.name}}</button>
-<button ng-click="addUser(recentTrip.name)">Add A Trip Member</button>
+<h3 ng-if="factoryCurrentTrip.data.users.length > 1">Trip Members:</h3>
+<div ng-if="factoryCurrentTrip.data.users.length > 1" ng-repeat="user in userInfo.userArray">
+  <p class="groupMembers">{{user.first_name}} {{user.last_name}}<button ng-click="deleteMember(user._id)">Delete Member</button></p>
+</div>
+<button ng-click="addUser(factoryCurrentTrip.data.name)">Add A Trip Member</button>
 <h3>{{errorMessage}}</h3>
 <h3>{{successMessage}}</h3>
-<div ng-show="includedTrip == recentTrip.name">
+<div ng-show="includedTrip == factoryCurrentTrip.data.name">
   <ul id="addUserForm">
     <li class="email">
       <label for="email">User's E-mail Address:</label>

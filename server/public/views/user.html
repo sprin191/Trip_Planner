@@ -14,7 +14,7 @@
     </div>
 </div>
 <button ng-click="deleteTrip()">Delete {{recentTrip.name}}</button>
-<h3>Trip Members:</h3>
+<h3 ng-if="recentTrip.users.length > 1">Trip Members:</h3>
 <div ng-if="recentTrip.users.length > 1" ng-repeat="user in userInfo.userArray">
   <p class="groupMembers">{{user.first_name}} {{user.last_name}}<button ng-click="deleteMember(user._id)">Delete Member</button></p>
 </div>

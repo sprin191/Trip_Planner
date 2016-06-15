@@ -86,6 +86,7 @@ $scope.userInfo="";
            else {
              $scope.errorMessage = "";
              $scope.successMessage = "Success!";
+             location.reload();
            }
          });
        };
