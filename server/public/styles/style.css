@@ -10,6 +10,8 @@
 
 body {
   font-family: 'Istok Web';
+  background-image: url(/images/client-world-map_402x.png);
+  background-size: 100%;
 }
 
 .headerContainer {
@@ -76,18 +78,21 @@ body {
   text-align: center;
 }
 
-.currentTrip{
-    color: #DDDDDD !important;
-    text-decoration: inherit;
-    display: inline;
+.page {
+  background-color: white;
+  background-color: rgba(255, 255, 255, 0.7);
+  display: inline-block;
+  min-width: 650px;
+  padding: 20px;
+  border-radius: 10px;
 }
 
 .currentTrip:hover {
-  text-decoration: inherit;
+  cursor: pointer;
 }
 
-.currentTrip:link {
-  text-decoration: inherit;
+.currentTrip {
+  display: inline;
 }
 
 .costPic, .groceryPic, .itineraryPic, .mealPic, .notePic  {
@@ -96,20 +101,25 @@ body {
   border-radius: 80px;
   border: 2px solid black;
   margin: 10px;
+  background-color: white;
 }
 
 .costPic:hover, .groceryPic:hover, .itineraryPic:hover, .mealPic:hover, .notePic:hover {
   opacity: 0.50;
+  cursor: pointer;
 }
 
-.groceryPic, .mealPic {
-  padding-right: 20px;
-  padding-left: 20px;
+.mealPic {
+  padding: 11px 10px 9px 14px;
 }
 
 .notePic {
   border-radius: 170px;
   padding: 20px 15px 20px 15px;
+}
+
+.costPic {
+  padding: 20px 40px 20px 40px;
 }
 
 .table {
@@ -119,7 +129,7 @@ body {
 .noteBody {
   width: 100%;
   height: 150px;
-  padding: 12px 20px;
+  padding: 4px;
   box-sizing: border-box;
   border: 2px solid #ccc;
   border-radius: 4px;
@@ -185,4 +195,28 @@ body {
 
 .noteTitleDisplay {
   text-decoration: underline;
+}
+
+.pageContent {
+  text-align: center;
+}
+
+.alignLeft {
+  text-align: left;
+}
+
+.alignRight {
+  text-align: right;
+}
+
+.notePage {
+  width: 80%
+}
+
+#currentBreakfast, #currentLunch, #currentDinner {
+  width: 175px;
+}
+
+#activityName {
+  width: 300px;
 }

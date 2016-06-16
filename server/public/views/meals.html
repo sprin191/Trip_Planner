@@ -1,5 +1,9 @@
-<div class="container">
-<h1>{{factoryCurrentTrip.data.name}} Meal Plan<button class="simple btn btn-secondary" ng-hide="factoryCurrentTrip.data._id=== deleteBtns" ng-if="factoryCurrentTrip.data.meals.length > 0" ng-click="showDeleteBtns()">Edit/Delete Date(s)</button></h1>
+<div class="pageContent">
+  <div class="page">
+    <div class="alignRight">
+    <button class="btn btn-secondary" ng-hide="factoryCurrentTrip.data._id=== deleteBtns" ng-if="factoryCurrentTrip.data.meals.length > 0" ng-click="showDeleteBtns()">Edit/Delete Date(s)</button>
+    </div>
+    <h1>{{factoryCurrentTrip.data.name}} Meal Plan</h1>
 <section id="mealSubmission">
       <form id="mealForm">
         <label for="currentDate">Add A New Day:</label>
@@ -19,7 +23,7 @@
       </form>
 </section>
 
-<section id="mealDates">
+<section id="mealDates" class="alignLeft">
           <div class="mealDates" ng-repeat="meal in factoryCurrentTrip.data.meals | orderBy: 'date'">
           <h3>{{meal.date}}<button class="btnItem btn btn-secondary" ng-if="factoryCurrentTrip.data._id === deleteBtns" ng-click="deleteDate(meal._id)"><img class="deletePic" src="/images/trash_icon2.png"/></button></h3>
           <ul class="meals">
@@ -30,4 +34,5 @@
         </div>
 </section>
 
+</div>
 </div>

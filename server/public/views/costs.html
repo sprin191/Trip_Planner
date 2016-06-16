@@ -1,5 +1,9 @@
-<div class="container">
-<h1>{{factoryCurrentTrip.data.name}} Budget <button class="btn btn-secondary" ng-hide="factoryCurrentTrip.data._id === deleteBtns" ng-if="factoryCurrentTrip.data.costs.length > 0" ng-click="showDeleteBtns()">Edit/Delete Item(s)</button></h1>
+<div class="pageContent">
+  <div class="page">
+    <div class="alignRight">
+    <button class="btn btn-secondary" ng-hide="factoryCurrentTrip.data._id === deleteBtns" ng-if="factoryCurrentTrip.data.costs.length > 0" ng-click="showDeleteBtns()">Edit/Delete Item(s)</button>
+    </div>
+    <h1>{{factoryCurrentTrip.data.name}} Budget</h1>
 <section id="costCategorySubmission">
       <form id="categoryForm">
         <label for="costCategory">Create A New Category:</label>
@@ -12,7 +16,7 @@
 
 <section id="costCategories">
           <div class = "categories" ng-repeat="cost in factoryCurrentTrip.data.costs">
-          <h3>{{cost.category}}<button class="btnItem btn btn-secondary" ng-if="factoryCurrentTrip.data._id=== deleteBtns" ng-click="deleteCategory(cost._id)"><img class="deletePic" src="/images/trash_icon2.png"/></button></h3>
+          <h3 class="alignLeft">{{cost.category}}<button class="btnItem btn btn-secondary" ng-if="factoryCurrentTrip.data._id=== deleteBtns" ng-click="deleteCategory(cost._id)"><img class="deletePic" src="/images/trash_icon2.png"/></button></h3>
           <table class = "table table-bordered">
             <thead ng-if="cost.items.length !== 0">
               <tr>
@@ -22,12 +26,14 @@
             </thead>
             <tbody>
               <tr class = "items" ng-repeat="item in cost.items">
-                <td><button class="btnItem btn btn-secondary" ng-if="factoryCurrentTrip.data._id === deleteBtns" ng-click="deleteItem(cost._id, item._id)"><img class="deletePic" src="/images/trash_icon2.png"/></button>   {{item.expense_name}}</td>
-                <td>${{item.cost}}</td>
+                <td class="alignLeft"><button class="btnItem btn btn-secondary" ng-if="factoryCurrentTrip.data._id === deleteBtns" ng-click="deleteItem(cost._id, item._id)"><img class="deletePic" src="/images/trash_icon2.png"/></button>   {{item.expense_name}}</td>
+                <td class="alignLeft">${{item.cost}}</td>
               </tr>
             </tbody>
           </table>
+          <div class="alignLeft">
           <button class="newitem btn btn-secondary" ng-hide="displayedCategoryID === cost._id" ng-click="addItem(cost._id)">Add New Item</button>
+          </div>
               <div ng-show="displayedCategoryID === cost._id">
                 <ul id="costForm">
                   <li class="expense">
@@ -36,12 +42,15 @@
 
                     <label for="cost">Cost: $</label>
                     <input type="number" id="cost" name="cost" ng-model="newExpense.cost" />
+                    <button class="addNewItem btn btn-secondary" ng-click="submitNewItem(cost._id)">Submit</button>
                   </li>
                   </ul>
-                  <button class="addNewItem btn btn-secondary" ng-click="submitNewItem(cost._id)">Submit</button>
                   </div>
                 </div>
 </section>
 
-<h3 ng-if="factoryCurrentTrip.data.costs.length > 0">TOTAL COST: ${{ getTotal() }}</h3><h3 ng-if="factoryCurrentTrip.data.users.length > 1 && factoryCurrentTrip.data.costs.length > 0"> GROUP TOTAL (COST PER PERSON): ${{ getGroupTotal() }}</h3>
+<hr />
+<h3 class="alignLeft" ng-if="factoryCurrentTrip.data.costs.length > 0">TOTAL COST: ${{ getTotal() }}</h3>
+<h3 class="alignLeft" ng-if="factoryCurrentTrip.data.users.length > 1 && factoryCurrentTrip.data.costs.length > 0"> GROUP TOTAL (COST PER PERSON): ${{ getGroupTotal() }}</h3>
+</div>
 </div>

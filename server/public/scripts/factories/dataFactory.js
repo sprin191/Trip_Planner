@@ -13,7 +13,7 @@ myApp.factory('DataFactory', ['$http', function($http) {
   }
 
   function getLocalStorage() {
-    var currentTrip = localStorage.getItem("trip");
+    var currentTrip = sessionStorage.getItem("trip");
     return JSON.parse(currentTrip);
   }
 
@@ -37,7 +37,7 @@ myApp.factory('DataFactory', ['$http', function($http) {
             trip.data[0].itinerary[j].date = moment( new Date(trip.data[0].itinerary[j].date)).format('MM/DD/YYYY');
             }
             selectedTrip.data = trip.data[0];
-            localStorage.setItem("trip", JSON.stringify(selectedTrip));
+            sessionStorage.setItem("trip", JSON.stringify(selectedTrip));
             console.log('GET /selectedTrip ', selectedTrip);
           });
           return promise;
@@ -64,7 +64,7 @@ myApp.factory('DataFactory', ['$http', function($http) {
               selectedTrip.data.departure = moment(selectedTrip.data.departure).format('MM/DD/YYYY');
               selectedTrip.data.return = moment(selectedTrip.data.return).format('MM/DD/YYYY');
               console.log(selectedTrip.data);
-              localStorage.setItem("trip", JSON.stringify(selectedTrip));
+              sessionStorage.setItem("trip", JSON.stringify(selectedTrip));
             }
           });
           return promise;

@@ -1,5 +1,9 @@
-<div class="container">
-<h1>{{factoryCurrentTrip.data.name}} Grocery List<button class="simple btn btn-secondary" ng-hide="factoryCurrentTrip.data._id=== deleteBtns" ng-if="factoryCurrentTrip.data.groceries.length > 0" ng-click="showDeleteBtns()">Edit/Delete Item(s)</button></h1>
+<div class="pageContent">
+  <div class="page">
+    <div class="alignRight">
+      <button class="simple btn btn-secondary" ng-hide="factoryCurrentTrip.data._id=== deleteBtns" ng-if="factoryCurrentTrip.data.groceries.length > 0" ng-click="showDeleteBtns()">Edit/Delete Item(s)</button>
+    </div>
+<h1>{{factoryCurrentTrip.data.name}} Grocery List</h1>
 <section id="groceryCategorySubmission">
       <form id="categoryForm">
         <label for="groceryCategory">Create A New Category:</label>
@@ -10,25 +14,28 @@
       </form>
 </section>
 
-<section id="groceryCategories">
+<section id="groceryCategories" class="alignLeft">
           <div class="categories" ng-repeat="grocery in factoryCurrentTrip.data.groceries">
           <h3 class="groceryCategory">{{grocery.category}}<button class="btnItem btn btn-secondary" ng-click="deleteCategory(grocery._id)" ng-if="factoryCurrentTrip.data._id=== deleteBtns"><img class="deletePic" src="/images/trash_icon2.png"/></button></h3>
               <div class="items" ng-repeat="item in grocery.items">
                 <h5 class="groceryItem"><input type="checkbox" id="purchased" name="purchased" ng-checked="item.purchased" ng-model="item.purchased" ng-click="seeUpdate()"/>{{item.name}}<button class="btnItem btn btn-secondary" ng-click="deleteItem(grocery._id, item._id)" ng-if="factoryCurrentTrip.data._id=== deleteBtns"><img class="deletePic" src="/images/trash_icon2.png"/></button></h5>
               </div>
-          <button class="newItem btn btn-secondary" ng-hide="displayedCategoryID == grocery._id" ng-click="addItem(grocery._id)">+ item</button>
+          <button class="btn btn-secondary" ng-hide="displayedCategoryID == grocery._id" ng-click="addItem(grocery._id)">Add New Item</button>
               <div ng-show="displayedCategoryID == grocery._id">
                 <ul id="GroceryForm">
                   <li class="name">
                     <label for="name">Name:</label>
                     <input type="text" id="name" name="name" ng-model="newItem.name" />
+                    <button class="addNewItem btn btn-secondary" ng-click="submitNewItem(grocery._id)">Submit</button>
                   </li>
                   </ul>
                   <h3>{{successMessage}}</h3>
-                  <button class="addNewItem btn btn-secondary" ng-click="submitNewItem(grocery._id)">Submit</button>
                   </div>
                 </div>
 </section>
 <br/>
-<button class="btn btn-secondary saveUpdates" ng-click="updatePurchased(factoryCurrentTrip.data.groceries)">Save Updates</button>
+<div class="alignLeft">
+<button class="btn btn-secondary saveUpdates" ng-if="factoryCurrentTrip.data.groceries[0].items.length > 0" ng-click="updatePurchased(factoryCurrentTrip.data.groceries)">Save Updates</button>
+</div>
+</div>
 </div>

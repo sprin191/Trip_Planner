@@ -1,7 +1,11 @@
-<div class="container">
-<h1>{{factoryCurrentTrip.data.name}} Notes<button class="simple btn btn-secondary" ng-hide="factoryCurrentTrip.data._id === deleteBtns" ng-if="factoryCurrentTrip.data.notes.length > 0" ng-click="showDeleteBtns()">Edit/Delete Item(s)</button></h1>
-<button class="btn btn-secondary" ng-hide="factoryCurrentTrip.data.notes.length === addNote || factoryCurrentTrip.data.notes.length === 0" ng-click="addItem()">Create New Note</button>
-<section id="noteSubmission" ng-show="factoryCurrentTrip.data.notes.length === addNote || factoryCurrentTrip.data.notes.length === 0">
+<div class="pageContent">
+  <div class="page notePage">
+  <div class="alignRight">
+    <button class="btn btn-secondary inline" ng-hide="factoryCurrentTrip.data.notes.length === addNote || factoryCurrentTrip.data.notes.length === 0" ng-click="addItem()">Create New Note</button>
+    <button class="simple btn btn-secondary" ng-hide="factoryCurrentTrip.data._id === deleteBtns" ng-if="factoryCurrentTrip.data.notes.length > 0" ng-click="showDeleteBtns()">Edit/Delete Item(s)</button>
+  </div>
+<h1>{{factoryCurrentTrip.data.name}} Notes</h1>
+<section id="noteSubmission" class="alignLeft" ng-show="factoryCurrentTrip.data.notes.length === addNote || factoryCurrentTrip.data.notes.length === 0">
       <form id="noteForm">
         <label for="noteTitle">Title:</label>
         <input type="text" id="noteTitle" name="noteTitle" ng-model="currentNote.title" />
@@ -14,11 +18,12 @@
       </form>
 </section>
 
-<section id="notes">
+<section id="notes" class="alignLeft">
           <div class="notes" ng-repeat="note in factoryCurrentTrip.data.notes">
           <h3 class="noteTitleDisplay">{{note.title}}<button class="btnItem" ng-if="factoryCurrentTrip.data._id === deleteBtns" ng-click="deleteNote(note._id)"><img class="deletePic" src="/images/trash_icon2.png"/></button></h3>
           <h5 class="noteBodyDisplay">{{note.body}}</h5>
         </div>
 </section>
 
+</div>
 </div>

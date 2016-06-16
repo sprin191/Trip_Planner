@@ -67,7 +67,7 @@ $scope.deleteBtns = '';
         total += (item);
         }
     }
-    return total;
+    return total.toFixed(2);
 };
 
     $scope.getGroupTotal = function() {

@@ -12,6 +12,15 @@ $scope.hidden = true;
     }
   };
 
+  $scope.routeHome = function() {
+    if ($scope.dataFactory.factoryCurrentUser() === undefined) {
+      $location.path("/home");
+    }
+    else {
+      $location.path("/currentTrip");
+    }
+  };
+
   function loadLogin () {
     if($scope.dataFactory.factoryCurrentUser() === undefined) {
       $scope.dataFactory.factoryRefreshUser().then(function() {

@@ -1,5 +1,9 @@
-<div class="container">
-<h1>{{factoryCurrentTrip.data.name}} Itinerary<button class="simple btn btn-secondary" ng-hide="factoryCurrentTrip.data._id === deleteBtns" ng-if="factoryCurrentTrip.data.itinerary.length > 0" ng-click="showDeleteBtns()">Edit/Delete Item(s)</button></h1>
+<div class="pageContent">
+  <div class="page">
+    <div class="alignRight">
+    <button class="btn btn-secondary" ng-hide="factoryCurrentTrip.data._id === deleteBtns" ng-if="factoryCurrentTrip.data.itinerary.length > 0" ng-click="showDeleteBtns()">Edit/Delete Item(s)</button>
+    </div>
+    <h1>{{factoryCurrentTrip.data.name}} Itinerary</h1>
 <section id="itineraryDateSubmission">
       <form id="itineraryDateForm">
         <label for="currentItineraryDate">Add A New Day:</label>
@@ -10,8 +14,8 @@
       </form>
 </section>
 
-<section id="itineraryDates">
-          <div class = "dates" ng-repeat="date in factoryCurrentTrip.data.itinerary | orderBy: 'date'">
+<section id="itineraryDates" class="alignLeft">
+          <div class = "date" ng-repeat="date in factoryCurrentTrip.data.itinerary | orderBy: 'date'">
           <h3>{{date.date}}<button class="btnItem btn btn-secondary" ng-if="factoryCurrentTrip.data._id === deleteBtns" ng-click="deleteDate(date._id)"><img class="deletePic" src="/images/trash_icon2.png"/></button></h3>
           <ul class = "activities" ng-repeat="activity in date.activities">
             <li class = "activity">{{activity.activity}}<button class="btnItem btn btn-secondary" ng-if="factoryCurrentTrip.data._id === deleteBtns" ng-click="deleteItem(date._id, activity._id)"><img class="deletePic" src="/images/trash_icon2.png"/></button></li>
@@ -22,11 +26,12 @@
                 <ul id="activityForm">
                   <li class="activity">
                     <label for="name">Name/Description:</label>
-                    <input type="text" id="name" name="name" ng-model="newActivity.activity" />
+                    <input type="text" id="activityName" name="name" ng-model="newActivity.activity" />
                   </li>
                   </ul>
                   <button class="addNewItem btn btn-secondary" ng-click="submitNewItem(date._id)">Submit</button>
                   </div>
                 </div>
 </section>
+</div>
 </div>
