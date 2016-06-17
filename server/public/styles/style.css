@@ -10,6 +10,9 @@
 
 body {
   font-family: 'Istok Web';
+}
+
+.bodyBackground {
   background-image: url(/images/client-world-map_402x.png);
   background-size: 100%;
 }
