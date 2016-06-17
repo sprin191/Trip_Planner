@@ -8,8 +8,9 @@ $scope.successMessage ="";
 $scope.tripName="";
 $scope.userInfo="";
 
-console.log($scope.dataFactory.factoryCurrentTrip);
+//console.log($scope.dataFactory.factoryCurrentTrip);
 
+//Retrieves selected trip data and group member information if applicable.
 if($scope.dataFactory.factoryCurrentTrip.data === undefined) {
   $scope.factoryCurrentTrip = $scope.dataFactory.factoryCurrentLocalStorage();
   $scope.dataFactory.factoryGetSelectedTrip($scope.factoryCurrentTrip.data._id).then(function() {
@@ -36,6 +37,7 @@ function getGroupMembers() {
   });
 }
 
+//Deletes a trip from the database.
 $scope.deleteTrip = function () {
   var confirmation = confirm("Are you sure you want to delete this trip?");
   if (confirmation === true) {
@@ -47,6 +49,7 @@ $http.delete('/selectedTrip/' + $scope.factoryCurrentTrip.data._id)
   }
  };
 
+//Deletes a member from a trip.
  $scope.deleteMember = function (id) {
    var confirmation = confirm("Are you sure you want to remove this user from the trip?");
    if (confirmation === true) {
@@ -57,10 +60,12 @@ $http.delete('/selectedTrip/' + $scope.factoryCurrentTrip.data._id)
    }
   };
 
+//Makes add user field visible.
  $scope.addUser = function (tripName) {
    $scope.includedTrip = tripName;
  };
 
+//Adds a new trip member.
  $scope.submitUser = function () {
    var email = $scope.newUser;
  $http.put('/selectedTrip/' + $scope.factoryCurrentTrip.data._id + '/email', email)

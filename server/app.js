@@ -58,7 +58,7 @@ app.use('/*', index);
 
 // Mongo Connection //
 // mongoose.set('debug', true);/
-var mongoURI = "mongodb://localhost:27017/trip_planner";
+var mongoURI = "mongodb://okami118:h118s@ds017544.mlab.com:17544/trip_cruncher";
 var mongoDB = mongoose.connect(mongoURI).connection;
 
 mongoDB.on('error', function(err){

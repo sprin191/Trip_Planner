@@ -6,14 +6,16 @@ $scope.displayedCategoryID = '';
 $scope.newItem = {};
 $scope.deleteBtns = '';
 
-console.log($scope.dataFactory.factoryCurrentTrip);
+//console.log($scope.dataFactory.factoryCurrentTrip);
 
+//Retrieves selected trip data.
 if($scope.dataFactory.factoryCurrentTrip.data === undefined) {
   console.log($scope.dataFactory.factoryCurrentLocalStorage());
   $scope.factoryCurrentTrip = $scope.dataFactory.factoryCurrentLocalStorage();
   console.log($scope.factoryCurrentTrip.data);
 }
 
+//
 $scope.showDeleteBtns = function () {
   $scope.deleteBtns = $scope.factoryCurrentTrip.data._id;
 };
