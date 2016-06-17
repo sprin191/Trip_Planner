@@ -2,13 +2,13 @@ myApp.controller('NewTripController', ['$scope', '$http', '$window', '$location'
     $scope.dataFactory = DataFactory;
     $scope.currentTrip = {};
 
+//Submits new trip data to the database.
     $scope.submitNewTrip = function () {
       var data = $scope.currentTrip;
-      // data.userid =
-      console.log(data);
+      //console.log(data);
       $http.post('/trips', data)
         .then(function () {
-          console.log('POST /trips');
+          //console.log('POST /trips');
           location.reload();
           $location.path ("/user");
         });

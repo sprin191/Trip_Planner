@@ -3,7 +3,7 @@ var router = express.Router();
 var Trip = require('../models/trip');
 
 router.put('/:id', function (req, res) {
-  console.log(req.body);
+  //console.log(req.body);
   Trip.findById( req.params.id, function (err, trip) {
     if (err) {
       res.sendStatus(500);
@@ -21,22 +21,22 @@ router.put('/:id', function (req, res) {
 });
 
 router.put('/:_id/category/:id/item/', function (req, res) {
-  console.log(req.body);
-  console.log(req.params);
+  //console.log(req.body);
+  //console.log(req.params);
   Trip.findById(req.params._id, function (err, trip) {
     if (err) {
-      console.log(err);
+      //console.log(err);
       res.sendStatus(500);
       return;
     }
 
     var doc = trip.groceries.id(req.params.id);
-    console.log(doc);
+    //console.log(doc);
     doc.items.push(req.body);
 
     trip.save(function (err) {
       if (err) {
-        console.log(err);
+        //console.log(err);
         res.sendStatus(500);
         return;
       }
@@ -47,11 +47,11 @@ router.put('/:_id/category/:id/item/', function (req, res) {
 });
 
 router.put('/:_id/update', function (req, res) {
-  console.log(req.body);
-  console.log(req.params);
+  //console.log(req.body);
+  //console.log(req.params);
   Trip.findById(req.params._id, function (err, trip) {
     if (err) {
-      console.log(err);
+      //console.log(err);
       res.sendStatus(500);
       return;
     }
@@ -60,7 +60,7 @@ router.put('/:_id/update', function (req, res) {
 
     trip.save(function (err) {
       if (err) {
-        console.log(err);
+        //console.log(err);
         res.sendStatus(500);
         return;
       }
@@ -78,11 +78,11 @@ router.delete('/:id/category/:id1', function (req, res) {
     }
 
     var doc = trip.groceries.id(req.params.id1).remove();
-    console.log(doc);
+    //console.log(doc);
 
     trip.save(function (err) {
       if (err) {
-        console.log(err);
+        //console.log(err);
         res.sendStatus(500);
         return;
       }
@@ -100,11 +100,11 @@ router.delete('/:_id/category/:id1/item/:id2', function (req, res) {
     }
 
     var doc = trip.groceries.id(req.params.id1).items.id(req.params.id2).remove();
-    console.log(doc);
+    //console.log(doc);
 
     trip.save(function (err) {
       if (err) {
-        console.log(err);
+        //console.log(err);
         res.sendStatus(500);
         return;
       }

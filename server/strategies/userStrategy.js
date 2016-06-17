@@ -7,7 +7,7 @@ var User = require('../models/user');
 // Stores info on req.session.passport.user
 // turns data into strings
 passport.serializeUser(function(user, done) {
-  console.log('serialized: ', user);
+  //console.log('serialized: ', user);
   done(null, user.id);
 });
 
@@ -21,7 +21,7 @@ passport.deserializeUser(function(id, done) {
       done(err);
     }
 
-    console.log('-----------------------------------------------\ndeserialized: ', user.id);
+    //console.log('-----------------------------------------------\ndeserialized: ', user.id);
     done(null, user);
   });
 });
@@ -40,7 +40,7 @@ passport.use('local', new localStrategy({
 
       if(!user) {
         // user not found
-        console.log('userStrategy.js :: no user found');
+        //console.log('userStrategy.js :: no user found');
         return done(null, false, {message: 'Incorrect credentials.'});
       } else {
         // found user! Now check their given password against the one stored in the DB
@@ -51,11 +51,11 @@ passport.use('local', new localStrategy({
 
           if(isMatch) {
             // all good, populate user object on the session through serializeUser
-            console.log('userStrategy.js :: all good');
+            //console.log('userStrategy.js :: all good');
             return(done(null, user));
           } else {
             // no good.
-            console.log('userStrategy.js :: password incorrect');
+            //console.log('userStrategy.js :: password incorrect');
             done(null, false, {message: 'Incorrect credentials.'});
           }
         });

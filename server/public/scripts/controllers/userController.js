@@ -14,6 +14,7 @@ $scope.userInfo="";
   loadLogin();
   getGroupMembers();
 
+//Retrieves user information.
   function loadLogin () {
   if($scope.dataFactory.factoryCurrentUser() === undefined) {
       $scope.dataFactory.factoryRefreshUser().then(function() {
@@ -27,6 +28,7 @@ $scope.userInfo="";
     }
   }
 
+//Retrieves most recently created trip information.
     function getRecentTrip() {
       $scope.dataFactory.factoryGetRecentTrip().then(function() {
       $scope.recentTrip = $scope.dataFactory.factoryCurrentTrip.data;
@@ -37,6 +39,7 @@ $scope.userInfo="";
           });
       }
 
+//Retrieves group member information if applicable.
       function getGroupMembers() {
         $scope.dataFactory.factoryGetRecentTrip().then(function() {
         $scope.recentTrip = $scope.dataFactory.factoryCurrentTrip.data;
@@ -50,6 +53,7 @@ $scope.userInfo="";
         });
       }
 
+//Deletes a trip member.
       $scope.deleteMember = function (id) {
         var confirmation = confirm("Are you sure you want to remove this user from the trip?");
         if (confirmation === true) {
@@ -61,6 +65,7 @@ $scope.userInfo="";
         }
        };
 
+//Deletes trip.
       $scope.deleteTrip = function () {
         var confirmation = confirm("Are you sure you want to delete this trip?");
         if (confirmation === true) {
@@ -72,11 +77,13 @@ $scope.userInfo="";
         }
        };
 
+//Displays add user field.
        $scope.addUser = function (tripName) {
          $scope.includedTrip = tripName;
          //console.log(tripName);
        };
 
+//Adds a new group member to the trip.
        $scope.submitUser = function () {
          var email = $scope.newUser;
          //console.log($scope.newUser);

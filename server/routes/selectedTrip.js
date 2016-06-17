@@ -50,24 +50,18 @@ router.delete('/:id', function (req, res) {
 });
 
 router.delete('/:id/:userid', function (req, res) {
-  // Trip.findById(req.params.id, function (err, trip) {
-  //   if (err) {
-  //     res.sendStatus(500);
-  //     return;
-  //   }
-    console.log('user id to pull: ', req.params.userid);
+    //console.log('user id to pull: ', req.params.userid);
     Trip.update(
       { _id: req.params.id },
       { $pull: { users: req.params.userid } },
       { multi: true },
       function(err, rawResponse) {
         if(err) {
-          console.log('error removing user ', err);
+          //console.log('error removing user ', err);
         }
         res.sendStatus(204);
       }
     );
-    // });
   });
 
 router.put('/:id/email', function (req, res) {

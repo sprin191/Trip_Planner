@@ -109,7 +109,7 @@ $scope.deleteBtns = '';
  return $scope.categoryTotal;
 };*/
 
-//Retrieves updated trip information.
+//Retrieves trip information.
   function loadUpdatedTrip() {
       $scope.dataFactory.factoryGetSelectedTrip($scope.factoryCurrentTrip.data._id);
       $scope.factoryCurrentTrip = $scope.dataFactory.factoryCurrentTrip;

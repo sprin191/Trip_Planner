@@ -3,10 +3,10 @@ var router = express.Router();
 var Trip = require('../models/trip');
 
 router.post('/', function (req, res) {
-console.log("made it here");
+//console.log("made it here");
   var trip = new Trip(req.body);
   trip.users = req.user.id;
-  console.log("post success");
+  //console.log("post success");
   trip.save(function (err) {
     if (err) {
       res.sendStatus(500);

@@ -24,7 +24,7 @@
         <script type="text/javascript" src="/scripts/controllers/packController.js"></script>
         <script>
             myApp.controller('Background', ['$scope','$http', '$window', '$location', 'DataFactory', function($scope, $http, $window, $location, DataFactory) {
-              //console.log('bg controller');
+              console.log('bg controller');
               $scope.dataFactory = DataFactory;
               $scope.first_name = undefined;
               $scope.loggedIn = '';
@@ -38,6 +38,7 @@
                     if ($scope.dataFactory.factoryCurrentUser() === undefined) {
                       $scope.loggedIn = false;
                       //console.log($scope.loggedIn);
+                      $location.path("/home");
                     }
                     else {
                       $scope.first_name = $scope.dataFactory.factoryCurrentUser();

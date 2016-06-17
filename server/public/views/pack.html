@@ -18,7 +18,7 @@
           <div class="categories" ng-repeat="category in factoryCurrentTrip.data.pack">
           <h3 class="packCategory">{{category.category}}<button class="btnItem btn btn-secondary" ng-click="deleteCategory(category._id)" ng-if="factoryCurrentTrip.data._id=== deleteBtns"><img class="deletePic" src="/images/trash_icon2.png"/></button></h3>
               <div class="items" ng-repeat="item in category.items">
-                <h5 class="packItem"><input type="checkbox" id="complete" name="complete" ng-checked="item.packed" ng-model="item.packed" ng-click="seeUpdate()"/>{{item.name}}<button class="btnItem btn btn-secondary" ng-click="deleteItem(category._id, item._id)" ng-if="factoryCurrentTrip.data._id=== deleteBtns"><img class="deletePic" src="/images/trash_icon2.png"/></button></h5>
+                <h5 class="packItem"><input type="checkbox" id="complete" name="complete" ng-checked="item.packed" ng-model="item.packed"/>{{item.name}}<button class="btnItem btn btn-secondary" ng-click="deleteItem(category._id, item._id)" ng-if="factoryCurrentTrip.data._id=== deleteBtns"><img class="deletePic" src="/images/trash_icon2.png"/></button></h5>
               </div>
           <button class="btn btn-secondary" ng-hide="displayedCategoryID == category._id" ng-click="addItem(category._id)">Add New Item</button>
               <div ng-show="displayedCategoryID == category._id">

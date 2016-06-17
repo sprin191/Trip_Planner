@@ -1,10 +1,11 @@
 myApp.factory('DataFactory', ['$http', function($http) {
-  console.log('dataFactory running');
+  //console.log('dataFactory running');
 
   // PRIVATE
   var first_name = undefined;
   var selectedTrip = {};
 
+//Retrieves user data.
   function getUser() {
     var promise = $http.get('/user').then(function(response) {
       first_name = response.data.first_name;
@@ -12,6 +13,7 @@ myApp.factory('DataFactory', ['$http', function($http) {
     return promise;
   }
 
+//Stores currently-selected trip information in session storage.
   function getLocalStorage() {
     var currentTrip = sessionStorage.getItem("trip");
     return JSON.parse(currentTrip);
@@ -26,6 +28,7 @@ myApp.factory('DataFactory', ['$http', function($http) {
     factoryCurrentUser: function() {
       return first_name;
     },
+    //Retrieves selected trip information from the database.
     factoryGetSelectedTrip: function (id) {
       var promise = $http.get('/selectedTrip/' + id).then(function (trip) {
             trip.data[0].departure = moment( new Date(trip.data[0].departure)).format('MM/DD/YYYY');
@@ -38,14 +41,15 @@ myApp.factory('DataFactory', ['$http', function($http) {
             }
             selectedTrip.data = trip.data[0];
             sessionStorage.setItem("trip", JSON.stringify(selectedTrip));
-            console.log('GET /selectedTrip ', selectedTrip);
+            //console.log('GET /selectedTrip ', selectedTrip);
           });
           return promise;
     },
     factoryCurrentTrip: selectedTrip,
+    //Retrieves most recently created trip information from the database.
     factoryGetRecentTrip: function () {
         var promise = $http.get('/trips').then(function (response) {
-            console.log(response.data);
+            //console.log(response.data);
             response.data.forEach(function (trip) {
               trip.departure = new Date(trip.departure);
               trip.return = new Date(trip.return);
@@ -57,13 +61,13 @@ myApp.factory('DataFactory', ['$http', function($http) {
               }
             });
             if (response.data.length === 0) {
-              console.log("You don't have any trips yet.");
+              //console.log("You don't have any trips yet.");
             }
             else {
               selectedTrip.data = response.data[response.data.length - 1];
               selectedTrip.data.departure = moment(selectedTrip.data.departure).format('MM/DD/YYYY');
               selectedTrip.data.return = moment(selectedTrip.data.return).format('MM/DD/YYYY');
-              console.log(selectedTrip.data);
+              //console.log(selectedTrip.data);
               sessionStorage.setItem("trip", JSON.stringify(selectedTrip));
             }
           });
