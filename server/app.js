@@ -18,6 +18,7 @@ var grocery = require('./routes/grocery');
 var meal = require('./routes/meal');
 var itinerary1 = require('./routes/itinerary1');
 var note = require('./routes/note');
+var packing = require('./routes/packing');
 
 // Body parser middleware
 app.use(bodyParser.json());
@@ -52,6 +53,7 @@ app.use('/grocery', grocery);
 app.use('/meal', meal);
 app.use('/itinerary1', itinerary1);
 app.use('/note', note);
+app.use('/packing', packing);
 app.use('/*', index);
 
 // Mongo Connection //

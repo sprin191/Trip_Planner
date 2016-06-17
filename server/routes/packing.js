@@ -9,7 +9,7 @@ router.put('/:id', function (req, res) {
       res.sendStatus(500);
       return;
     }
-    trip.groceries.push(req.body);
+    trip.pack.push(req.body);
     trip.save(function (err) {
       if (err) {
         res.sendStatus(500);
@@ -30,7 +30,7 @@ router.put('/:_id/category/:id/item/', function (req, res) {
       return;
     }
 
-    var doc = trip.groceries.id(req.params.id);
+    var doc = trip.pack.id(req.params.id);
     console.log(doc);
     doc.items.push(req.body);
 
@@ -56,7 +56,7 @@ router.put('/:_id/update', function (req, res) {
       return;
     }
 
-    trip.groceries = req.body;
+    trip.pack = req.body;
 
     trip.save(function (err) {
       if (err) {
@@ -77,7 +77,7 @@ router.delete('/:id/category/:id1', function (req, res) {
       return;
     }
 
-    var doc = trip.groceries.id(req.params.id1).remove();
+    var doc = trip.pack.id(req.params.id1).remove();
     console.log(doc);
 
     trip.save(function (err) {
@@ -99,7 +99,7 @@ router.delete('/:_id/category/:id1/item/:id2', function (req, res) {
       return;
     }
 
-    var doc = trip.groceries.id(req.params.id1).items.id(req.params.id2).remove();
+    var doc = trip.pack.id(req.params.id1).items.id(req.params.id2).remove();
     console.log(doc);
 
     trip.save(function (err) {

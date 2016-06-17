@@ -5,6 +5,7 @@ var GroceryCategorySchema = require('./groceryCategory').schema;
 var MealPlanSchema = require('./mealPlan').schema;
 var ItineraryDateSchema = require('./itineraryDate').schema;
 var NoteSchema = require('./note').schema;
+var PackCategorySchema = require('./packCategory').schema;
 
 var TripSchema = new Schema({
   name: { type: String },
@@ -13,6 +14,7 @@ var TripSchema = new Schema({
   return: Date,
   users: [Schema.Types.ObjectId],
   costs: [CostCategorySchema],
+  pack: [PackCategorySchema],
   groceries: [GroceryCategorySchema],
   meals: [MealPlanSchema],
   itinerary: [ItineraryDateSchema],

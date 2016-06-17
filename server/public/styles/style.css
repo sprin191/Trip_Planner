@@ -95,7 +95,7 @@ body {
   display: inline;
 }
 
-.costPic, .groceryPic, .itineraryPic, .mealPic, .notePic  {
+.costPic, .groceryPic, .itineraryPic, .mealPic, .notePic, .packPic  {
   max-height: 150px;
   width: auto;
   border-radius: 80px;
@@ -104,7 +104,7 @@ body {
   background-color: white;
 }
 
-.costPic:hover, .groceryPic:hover, .itineraryPic:hover, .mealPic:hover, .notePic:hover {
+.costPic:hover, .groceryPic:hover, .itineraryPic:hover, .mealPic:hover, .notePic:hover, .packPic:hover {
   opacity: 0.50;
   cursor: pointer;
 }
@@ -119,7 +119,11 @@ body {
 }
 
 .costPic {
-  padding: 20px 40px 20px 40px;
+  padding: 20px 42px 20px 42px;
+}
+
+.packPic {
+  padding: 26px 14px 26px 14px;
 }
 
 .table {

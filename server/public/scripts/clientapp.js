@@ -43,6 +43,10 @@ myApp.config(['$routeProvider', function($routeProvider) {
       templateUrl: '/views/notes.html',
       controller: "NotesController",
     })
+    .when('/pack', {
+      templateUrl: '/views/pack.html',
+      controller: "PackController",
+    })
     .otherwise({
       redirectTo: 'home'
     });
