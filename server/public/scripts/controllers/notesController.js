@@ -32,6 +32,11 @@ if($scope.dataFactory.factoryCurrentTrip.data === undefined) {
     $scope.addNote = $scope.factoryCurrentTrip.data.notes.length;
   };
 
+//Hides delete buttons.
+    $scope.hideDeleteBtns = function () {
+      $scope.deleteBtns = '';
+    };
+
 //Displays delete buttons.
   $scope.showDeleteBtns = function () {
     $scope.deleteBtns = $scope.factoryCurrentTrip.data._id;

@@ -20,6 +20,11 @@ $scope.showDeleteBtns = function () {
   $scope.deleteBtns = $scope.factoryCurrentTrip.data._id;
 };
 
+//Hides delete buttons.
+  $scope.hideDeleteBtns = function () {
+    $scope.deleteBtns = '';
+  };
+
 //Submits a new date + meal plan information to the database.
 $scope.submitNewDate = function () {
   //console.log($scope.currentMealDate);

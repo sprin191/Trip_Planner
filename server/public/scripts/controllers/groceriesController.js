@@ -20,6 +20,11 @@ $scope.showDeleteBtns = function () {
   $scope.deleteBtns = $scope.factoryCurrentTrip.data._id;
 };
 
+//Hides delete buttons.
+  $scope.hideDeleteBtns = function () {
+    $scope.deleteBtns = '';
+  };
+
 //Displays add item field.
   $scope.addItem = function (id) {
     //console.log('showAddItem', id);

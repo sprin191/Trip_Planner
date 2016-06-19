@@ -26,6 +26,11 @@ $scope.showDeleteBtns = function () {
     $scope.displayedCategoryID = id;
   };
 
+//Hides delete buttons.
+    $scope.hideDeleteBtns = function () {
+      $scope.deleteBtns = '';
+    };
+
 //Submits a new packing category to the database.
   $scope.submitNewCategory = function () {
     //console.log($scope.currentPackCategory);

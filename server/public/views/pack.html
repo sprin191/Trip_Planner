@@ -1,10 +1,12 @@
 <div class="pageContent">
   <div class="page">
     <div class="alignRight">
-      <button class="simple btn btn-secondary" ng-hide="factoryCurrentTrip.data._id=== deleteBtns" ng-if="factoryCurrentTrip.data.pack.length > 0" ng-click="showDeleteBtns()">Edit/Delete Item(s)</button>
+      <button class="simple btn btn-secondary" ng-hide="factoryCurrentTrip.data._id=== deleteBtns" ng-if="factoryCurrentTrip.data.pack.length > 0" ng-click="showDeleteBtns()">Delete Item(s)</button>
+      <button class="btn btn-secondary" ng-hide="factoryCurrentTrip.data._id !== deleteBtns" ng-if="factoryCurrentTrip.data.pack.length > 0" ng-click="hideDeleteBtns()">Done Editing</button>
     </div>
-<h1>{{factoryCurrentTrip.data.name}} Packing/To-Do List</h1>
-<section id="packCategorySubmission">
+    <h1>{{factoryCurrentTrip.data.name}} Packing/To-Do List</h1>
+
+    <section id="packCategorySubmission">
       <form id="packForm">
         <label for="packCategory">Create A New Category:</label>
         <input type="text" id="currentPackCategory" name="packCategory" ng-model="currentPackCategory.category" />
@@ -12,30 +14,31 @@
         <button class="btn btn-secondary" ng-click="submitNewCategory()">Submit</button>
 
       </form>
-</section>
+    </section>
 
-<section id="packCategories" class="alignLeft">
-          <div class="categories" ng-repeat="category in factoryCurrentTrip.data.pack">
-          <h3 class="packCategory">{{category.category}}<button class="btnItem btn btn-secondary" ng-click="deleteCategory(category._id)" ng-if="factoryCurrentTrip.data._id=== deleteBtns"><img class="deletePic" src="/images/trash_icon2.png"/></button></h3>
-              <div class="items" ng-repeat="item in category.items">
-                <h5 class="packItem"><input type="checkbox" id="complete" name="complete" ng-checked="item.packed" ng-model="item.packed"/>{{item.name}}<button class="btnItem btn btn-secondary" ng-click="deleteItem(category._id, item._id)" ng-if="factoryCurrentTrip.data._id=== deleteBtns"><img class="deletePic" src="/images/trash_icon2.png"/></button></h5>
-              </div>
-          <button class="btn btn-secondary" ng-hide="displayedCategoryID == category._id" ng-click="addItem(category._id)">Add New Item</button>
-              <div ng-show="displayedCategoryID == category._id">
-                <ul id="packingForm">
-                  <li class="name">
-                    <label for="name">Name:</label>
-                    <input type="text" id="name" name="name" ng-model="newItem.name" />
-                    <button class="addNewItem btn btn-secondary" ng-click="submitNewItem(category._id)">Submit</button>
-                  </li>
-                  </ul>
-                  <h3>{{successMessage}}</h3>
-                  </div>
-                </div>
-</section>
-<br/>
-<div class="alignLeft">
-<button class="btn btn-secondary saveUpdates" ng-if="factoryCurrentTrip.data.pack[0].items.length > 0" ng-click="updatePacked(factoryCurrentTrip.data.pack)">Save Updates</button>
-</div>
-</div>
+    <section id="packCategories" class="alignLeft">
+      <div class="categories" ng-repeat="category in factoryCurrentTrip.data.pack">
+        <h3 class="packCategory">{{category.category}}<button class="btnItem btn btn-secondary" ng-click="deleteCategory(category._id)" ng-if="factoryCurrentTrip.data._id=== deleteBtns"><img class="deletePic" src="/images/trash_icon2.png"/></button></h3>
+        <div class="items" ng-repeat="item in category.items">
+          <h5 class="packItem"><input type="checkbox" id="complete" name="complete" ng-checked="item.packed" ng-model="item.packed"/>{{item.name}}<button class="btnItem btn btn-secondary" ng-click="deleteItem(category._id, item._id)" ng-if="factoryCurrentTrip.data._id=== deleteBtns"><img class="deletePic" src="/images/trash_icon2.png"/></button></h5>
+        </div>
+        <button class="btn btn-secondary" ng-hide="displayedCategoryID == category._id" ng-click="addItem(category._id)">Add New Item</button>
+        <div ng-show="displayedCategoryID == category._id">
+          <ul id="packingForm">
+            <li class="name">
+              <label for="name">Name:</label>
+              <input type="text" id="name" name="name" ng-model="newItem.name" />
+              <button class="addNewItem btn btn-secondary" ng-click="submitNewItem(category._id)">Submit</button>
+            </li>
+          </ul>
+          <h3>{{successMessage}}</h3>
+        </div>
+      </div>
+    </section>
+
+    <br/>
+    <div class="alignLeft">
+      <button class="btn btn-secondary saveUpdates" ng-if="factoryCurrentTrip.data.pack[0].items.length > 0" ng-click="updatePacked(factoryCurrentTrip.data.pack)">Save Updates</button>
+    </div>
+  </div>
 </div>
