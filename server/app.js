@@ -58,10 +58,22 @@ app.use('/*', index);
 
 // Mongo Connection //
 // mongoose.set('debug', true);/
-var mongoURI = "mongodb://okami118:h118s@ds017544.mlab.com:17544/trip_cruncher";
-var mongoDB = mongoose.connect(mongoURI).connection;
+// var mongoURI = "mongodb://okami118:h118s@ds017544.mlab.com:17544/trip_cruncher";
+// var mongoDB = mongoose.connect(mongoURI).connection;
+var databaseURI = '';
+// process.env.MONGODB_URI will only be defined if you
+// are running on Heroku
+if(process.env.MONGODB_URI !== undefined) {
+    // use the string value of the environment variable
+    databaseURI = process.env.MONGODB_URI;
+} else {
+    // use the local database server
+    databaseURI = 'mongodb://localhost:27017/trip_planner';
+}
 
-mongoDB.on('error', function(err){
+mongoose.connect(databaseURI);
+
+/*mongoDB.on('error', function(err){
    if(err) {
      console.log("MONGO ERROR: ", err);
    }
@@ -70,7 +82,7 @@ mongoDB.on('error', function(err){
 
 mongoDB.once('open', function(){
    console.log("Connected to Mongo!");
-});
+});*/
 
 // App Set //
 app.set('port', (process.env.PORT || 5000));
