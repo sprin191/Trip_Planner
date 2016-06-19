@@ -37,6 +37,7 @@ $scope.deleteBtns = '';
       //console.log($scope.currentCostCategory);
     $http.put('/cost/' + $scope.factoryCurrentTrip.data._id, $scope.currentCostCategory)
       .then(function (response) {
+        $scope.currentCostCategory.category = '';
         //console.log('PUT /selectedTrip/ ', $scope.currentCostCategory);
         loadUpdatedTrip();
       });
@@ -47,6 +48,8 @@ $scope.deleteBtns = '';
       var item = $scope.newExpense;
         $http.put('/cost/' + $scope.factoryCurrentTrip.data._id + '/category/' + id + '/item', item)
           .then(function (response) {
+            $scope.newExpense.expense_name = '';
+            $scope.newExpense.cost = '';
             //console.log('PUT /selectedTrip/ ', item);
             loadUpdatedTrip();
           });

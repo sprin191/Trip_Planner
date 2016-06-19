@@ -93,8 +93,9 @@ $scope.userInfo="";
             $scope.errorMessage = response.data.error;
            }
            else {
-             $scope.errorMessage = "";
-             $scope.successMessage = "Success!";
+             $scope.errorMessage = '';
+             $scope.successMessage = 'Success!';
+             $scope.newUser.email = '';
              location.reload();
            }
          });

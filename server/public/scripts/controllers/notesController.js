@@ -21,6 +21,8 @@ if($scope.dataFactory.factoryCurrentTrip.data === undefined) {
    //console.log($scope.currentNote);
     $http.put('/note/' + $scope.factoryCurrentTrip.data._id, $scope.currentNote)
       .then(function (response) {
+        $scope.currentNote.title = '';
+        $scope.currentNote.body = '';
         //console.log('PUT /note/ ', $scope.currentNote);
         loadUpdatedTrip();
       });

@@ -36,6 +36,7 @@ $scope.showDeleteBtns = function () {
     //console.log($scope.currentPackCategory);
     $http.put('/packing/' + $scope.factoryCurrentTrip.data._id, $scope.currentPackCategory)
       .then(function (response) {
+        $scope.currentPackCategory.category = '';
         //console.log('PUT /packing/ ', $scope.currentPackCategory);
         loadUpdatedTrip();
       });
@@ -47,6 +48,7 @@ $scope.showDeleteBtns = function () {
       var item = $scope.newItem;
         $http.put('/packing/' + $scope.factoryCurrentTrip.data._id + '/category/' + id + '/item', item)
           .then(function (response) {
+            $scope.newItem.name = '';
             //console.log('PUT /packing/ ', item);
             loadUpdatedTrip();
           });

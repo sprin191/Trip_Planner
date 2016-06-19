@@ -30,6 +30,10 @@ $scope.submitNewDate = function () {
   //console.log($scope.currentMealDate);
     $http.put('/meal/' + $scope.factoryCurrentTrip.data._id, $scope.currentMealDate)
       .then(function (response) {
+        $scope.currentMealDate.date = '';
+        $scope.currentMealDate.breakfast = '';
+        $scope.currentMealDate.lunch = '';
+        $scope.currentMealDate.dinner = '';
         //console.log('PUT /meal/ ', $scope.currentMealDate);
         loadUpdatedTrip();
     });

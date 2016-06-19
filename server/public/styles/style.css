@@ -224,3 +224,7 @@ body {
 #activityName {
   width: 300px;
 }
+
+#complete, #purchased {
+  margin-right: 5px;
+}

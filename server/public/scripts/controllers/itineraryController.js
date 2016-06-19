@@ -36,6 +36,7 @@ $scope.showDeleteBtns = function () {
       //console.log($scope.currentItineraryDate);
     $http.put('/itinerary1/' + $scope.factoryCurrentTrip.data._id, $scope.currentItineraryDate)
       .then(function (response) {
+        $scope.currentItineraryDate.date = '';
         //console.log('PUT /itinerary1/ ', $scope.currentItineraryDate);
         loadUpdatedTrip();
       });
@@ -46,6 +47,7 @@ $scope.showDeleteBtns = function () {
       var item = $scope.newActivity;
         $http.put('/itinerary1/' + $scope.factoryCurrentTrip.data._id + '/date/' + id + '/item', item)
           .then(function (response) {
+            $scope.newActivity.activity = '';
             //console.log('PUT /itinerary1/ ', item);
             loadUpdatedTrip();
           });

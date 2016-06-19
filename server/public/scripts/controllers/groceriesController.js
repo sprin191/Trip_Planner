@@ -36,6 +36,7 @@ $scope.showDeleteBtns = function () {
     console.log($scope.currentGroceryCategory);
     $http.put('/grocery/' + $scope.factoryCurrentTrip.data._id, $scope.currentGroceryCategory)
       .then(function (response) {
+        $scope.currentGroceryCategory.category = '';
         //console.log('PUT /selectedTrip/ ', $scope.currentGroceryCategory);
         loadUpdatedTrip();
       });
@@ -47,6 +48,7 @@ $scope.showDeleteBtns = function () {
       var item = $scope.newItem;
         $http.put('/grocery/' + $scope.factoryCurrentTrip.data._id + '/category/' + id + '/item', item)
           .then(function (response) {
+            $scope.newItem.name = '';
             //console.log('PUT /grocery/ ', item);
             loadUpdatedTrip();
           });
