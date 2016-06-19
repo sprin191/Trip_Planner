@@ -26,32 +26,6 @@
             myApp.controller('Background', ['$scope','$http', '$window', '$location', 'DataFactory', function($scope, $http, $window, $location, DataFactory) {
               console.log('bg controller');
               $scope.dataFactory = DataFactory;
-              $scope.first_name = undefined;
-              $scope.loggedIn = '';
-
-              loadLogin();
-
-              function loadLogin () {
-              if($scope.dataFactory.factoryCurrentUser() === undefined) {
-                  $scope.dataFactory.factoryRefreshUser().then(function() {
-                    $scope.first_name = $scope.dataFactory.factoryCurrentUser();
-                    if ($scope.dataFactory.factoryCurrentUser() === undefined) {
-                      $scope.loggedIn = false;
-                      //console.log($scope.loggedIn);
-                      $location.path("/home");
-                    }
-                    else {
-                      $scope.first_name = $scope.dataFactory.factoryCurrentUser();
-                      $scope.loggedIn = true;
-                      //console.log($scope.loggedIn);
-                    }
-                  });
-                } else {
-                  $scope.first_name = $scope.dataFactory.factoryCurrentUser();
-                  $scope.loggedIn = true;
-                  //console.log($scope.loggedIn);
-                }
-              }
 
             }]);
         </script>
