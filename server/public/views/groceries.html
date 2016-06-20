@@ -31,7 +31,6 @@
               <button class="addNewItem btn btn-secondary" ng-click="submitNewItem(grocery._id)">Submit</button>
             </li>
           </ul>
-          <h3>{{successMessage}}</h3>
         </div>
       </div>
     </section>
@@ -39,6 +38,7 @@
     <br/>
 
     <div class="alignLeft">
+      <h3>{{successMessage}}</h3>
       <button class="btn btn-secondary saveUpdates" ng-if="factoryCurrentTrip.data.groceries[0].items.length > 0" ng-click="updatePurchased(factoryCurrentTrip.data.groceries)">Save Checklist Updates</button>
     </div>
   </div>

@@ -31,13 +31,13 @@
               <button class="addNewItem btn btn-secondary" ng-click="submitNewItem(category._id)">Submit</button>
             </li>
           </ul>
-          <h3>{{successMessage}}</h3>
         </div>
       </div>
     </section>
 
     <br/>
     <div class="alignLeft">
+      <h3>{{successMessage}}</h3>
       <button class="btn btn-secondary saveUpdates" ng-if="factoryCurrentTrip.data.pack[0].items.length > 0" ng-click="updatePacked(factoryCurrentTrip.data.pack)">Save Checklist Updates</button>
     </div>
   </div>

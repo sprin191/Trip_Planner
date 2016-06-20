@@ -5,6 +5,7 @@ $scope.currentPackCategory = {};
 $scope.displayedCategoryID = '';
 $scope.newItem = {};
 $scope.deleteBtns = '';
+$scope.successMessage = '';
 
 //console.log($scope.dataFactory.factoryCurrentTrip);
 
