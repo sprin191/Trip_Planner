@@ -8,7 +8,7 @@ $scope.hidden = true;
   $scope.loadSelectedTrip = function(id) {
     if(id !== '') {
       $scope.dataFactory.factoryGetSelectedTrip(id).then(function() {
-          $location.path ("/currentTrip");
+          $window.location.href='#/currentTrip';
       });
     }
   };
@@ -16,10 +16,10 @@ $scope.hidden = true;
 //On-click event function; if the user clicks on the app name in the header, it will redirect the user accordingly.
   $scope.routeHome = function() {
     if ($scope.dataFactory.factoryCurrentUser() === undefined) {
-      $location.path("/home");
+      $window.location.href='#/home';
     }
     else {
-      $location.path("/currentTrip");
+      $window.location.href='#/currentTrip';
     }
   };
 
@@ -30,7 +30,7 @@ $scope.hidden = true;
         $scope.userName = $scope.dataFactory.factoryCurrentUser();
         $scope.hidden = false;
         if ($scope.dataFactory.factoryCurrentUser() === undefined) {
-          $location.path("/home");
+          $window.location.href='#/home';
           $scope.hidden = true;
         }
         if ($scope.dataFactory.factoryCurrentUser() !== undefined) {
@@ -48,8 +48,8 @@ $scope.hidden = true;
     //console.log('made to logged out');
     $http.get('/user/logout').then(function(response) {
       //console.log('logged out');
-      $location.path("/home");
-      location.reload();
+      $window.location.href='#/home';
+      $window.location.reload();
     });
   };
 

@@ -15,8 +15,8 @@ myApp.controller('LoginController', ['$scope', '$http', '$window', '$location', 
           if(response.data.username) {
             //console.log('success: ', response.data);
             // location works with SPA (ng-route)
-            $location.path('/user');
-            location.reload();
+            $window.location.href='#/user';
+            $window.location.reload();
           } else {
             //console.log('failure: ', response);
             $scope.message = "Incorrect login credentials, please try again.";
@@ -33,7 +33,7 @@ myApp.controller('LoginController', ['$scope', '$http', '$window', '$location', 
         $http.post('/register', $scope.user).then(function(response) {
           //console.log('success');
           $scope.message = "";
-          $location.path('/home');
+          $window.location.href='#/home';
         },
         function(response) {
           //console.log('error');

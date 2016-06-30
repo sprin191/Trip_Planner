@@ -9,8 +9,8 @@ myApp.controller('NewTripController', ['$scope', '$http', '$window', '$location'
       $http.post('/trips', data)
         .then(function () {
           //console.log('POST /trips');
-          location.reload();
-          $location.path ("/user");
+          $window.location.href='#/user';
+          $window.location.reload();
         });
     };
 

@@ -43,8 +43,8 @@ $scope.deleteTrip = function () {
   if (confirmation === true) {
 $http.delete('/selectedTrip/' + $scope.factoryCurrentTrip.data._id)
   .then(function (response) {
-    location.reload();
-    $location.path ("/user");
+    $window.location.reload();
+    $window.location.href="#/user";
     });
   }
  };
@@ -55,7 +55,7 @@ $http.delete('/selectedTrip/' + $scope.factoryCurrentTrip.data._id)
    if (confirmation === true) {
  $http.delete('/selectedTrip/' + $scope.factoryCurrentTrip.data._id + '/' + id)
    .then(function (response) {
-     location.reload();
+     $window.location.reload();
      });
    }
   };
@@ -77,7 +77,7 @@ $http.delete('/selectedTrip/' + $scope.factoryCurrentTrip.data._id)
        $scope.errorMessage = '';
        $scope.successMessage = 'Success!';
        $scope.newUser.email = '';
-       location.reload();
+       $window.location.reload();
      }
    });
   };
