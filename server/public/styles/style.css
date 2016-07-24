@@ -96,7 +96,7 @@ body {
 }
 
 .costPic, .groceryPic, .itineraryPic, .mealPic, .notePic, .packPic  {
-  max-height: 150px;
+  max-height: 140px;
   width: auto;
   border-radius: 80px;
   border: 2px solid black;
@@ -115,11 +115,11 @@ body {
 
 .notePic {
   border-radius: 170px;
-  padding: 20px 15px 20px 15px;
+  padding: 23px 19px 23px 19px;
 }
 
 .costPic {
-  padding: 20px 42px 20px 42px;
+  padding: 23px 42px 23px 42px;
 }
 
 .packPic {

@@ -20,7 +20,7 @@ $scope.userInfo="";
       $scope.dataFactory.factoryRefreshUser().then(function() {
         $scope.first_name = $scope.dataFactory.factoryCurrentUser();
         if ($scope.dataFactory.factoryCurrentUser() === undefined) {
-          $location.path("/home");
+          $window.location.href='#/home';
         }
       });
     } else {
@@ -60,7 +60,7 @@ $scope.userInfo="";
       $http.delete('/selectedTrip/' + $scope.recentTrip._id + '/' + id)
         .then(function (response) {
           //console.log('DELETE /user/ ', $scope.recentTrip._id);
-          location.reload();
+          getGroupMembers();
           });
         }
        };
@@ -72,7 +72,7 @@ $scope.userInfo="";
       $http.delete('/selectedTrip/' + $scope.recentTrip._id)
         .then(function (response) {
           //console.log('DELETE /trip/ ', $scope.recentTrip._id);
-          location.reload();
+          $window.location.reload();
           });
         }
        };
@@ -96,7 +96,7 @@ $scope.userInfo="";
              $scope.errorMessage = '';
              $scope.successMessage = 'Success!';
              $scope.newUser.email = '';
-             location.reload();
+             getGroupMembers();
            }
          });
        };

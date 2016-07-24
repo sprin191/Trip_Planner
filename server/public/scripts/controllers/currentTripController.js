@@ -55,7 +55,7 @@ $http.delete('/selectedTrip/' + $scope.factoryCurrentTrip.data._id)
    if (confirmation === true) {
  $http.delete('/selectedTrip/' + $scope.factoryCurrentTrip.data._id + '/' + id)
    .then(function (response) {
-     $window.location.reload();
+     getGroupMembers();
      });
    }
   };
@@ -77,7 +77,7 @@ $http.delete('/selectedTrip/' + $scope.factoryCurrentTrip.data._id)
        $scope.errorMessage = '';
        $scope.successMessage = 'Success!';
        $scope.newUser.email = '';
-       $window.location.reload();
+       getGroupMembers();
      }
    });
   };
