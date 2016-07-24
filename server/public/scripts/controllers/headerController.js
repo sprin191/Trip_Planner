@@ -13,18 +13,18 @@ $scope.hidden = true;
           if ($scope.dataFactory.factoryCurrentUser() === undefined) {
             $location.path("/home");
             $scope.hidden = true;
-            console.log($scope.hidden);
+            //console.log($scope.hidden);
           }
           if ($scope.dataFactory.factoryCurrentUser() !== undefined) {
             getTrips();
             $scope.hidden = false;
-            console.log($scope.hidden);
+            //console.log($scope.hidden);
           }
         });
       } else {
         $scope.userName = $scope.dataFactory.factoryCurrentUser();
         $scope.hidden = false;
-        console.log($scope.hidden);
+        //console.log($scope.hidden);
       }
     }
 
